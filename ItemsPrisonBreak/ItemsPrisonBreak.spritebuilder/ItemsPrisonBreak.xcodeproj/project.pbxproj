@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		404441DE1A9AE2AB00942654 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441DD1A9AE2AB00942654 /* Stone.m */; };
+		404441E51A9AE6BA00942654 /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441E41A9AE6BA00942654 /* Gameplay.m */; };
 		5B121030197484FA004C1E1D /* ItemsPrisonBreakActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* ItemsPrisonBreakActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
@@ -152,6 +153,8 @@
 /* Begin PBXFileReference section */
 		404441DC1A9AE2AB00942654 /* Stone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stone.h; path = Source/Stone.h; sourceTree = "<group>"; };
 		404441DD1A9AE2AB00942654 /* Stone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stone.m; path = Source/Stone.m; sourceTree = "<group>"; };
+		404441E31A9AE6BA00942654 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gameplay.h; path = Source/Gameplay.h; sourceTree = "<group>"; };
+		404441E41A9AE6BA00942654 /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gameplay.m; path = Source/Gameplay.m; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -442,6 +445,8 @@
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
+				404441E31A9AE6BA00942654 /* Gameplay.h */,
+				404441E41A9AE6BA00942654 /* Gameplay.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 				404441DC1A9AE2AB00942654 /* Stone.h */,
 				404441DD1A9AE2AB00942654 /* Stone.m */,
@@ -822,6 +827,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B73789871807631A0076A88C /* main.m in Sources */,
+				404441E51A9AE6BA00942654 /* Gameplay.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				404441DE1A9AE2AB00942654 /* Stone.m in Sources */,

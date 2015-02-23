@@ -54,7 +54,7 @@
     
     [self setupCocos2dWithOptions:cocos2dSetup];
     
-    [CCBReader load:@"Stone"];
+//    [CCBReader load:@"Stone"];
     
     return YES;
 }
