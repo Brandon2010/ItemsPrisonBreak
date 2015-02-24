@@ -7,18 +7,23 @@
 //
 
 #import "Gameplay.h"
+#import "CCPhysics+ObjectiveChipmunk.h"
 
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
     CCNode *_escaperHand;
     CCNode *_levelNode;
+    CCNode *_pullbackNode;
 }
 
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB {
+    _physicsNode.collisionDelegate = self;
     self.userInteractionEnabled = TRUE;
     CCScene *level = [CCBReader loadAsScene:@"Levels/Level1"];
     [_levelNode addChild:level];
+    _pullbackNode.physicsBody.collisionMask = @[];
+    _physicsNode.debugDraw = TRUE;
 }
 
 // called on every touch in this scene
@@ -36,6 +41,13 @@
     CGPoint launchDirection = ccp(1, 0);
     CGPoint force = ccpMult(launchDirection, 8000);
     [stone.physicsBody applyForce:force];
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone redswitch :(CCNode *)redswitch {
+    [redswitch removeFromParent];
+    [stone removeFromParent];
+    CCLOG(@"collision");
+    return YES;
 }
 
 @end

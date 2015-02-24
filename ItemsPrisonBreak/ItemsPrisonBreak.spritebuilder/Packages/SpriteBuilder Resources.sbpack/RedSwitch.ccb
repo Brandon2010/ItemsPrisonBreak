@@ -40,7 +40,7 @@
 		<key>children</key>
 		<array/>
 		<key>customClass</key>
-		<string>Stone</string>
+		<string>RedSwitch</string>
 		<key>displayName</key>
 		<string>CCSprite</string>
 		<key>memberVarAssignmentName</key>
@@ -54,19 +54,19 @@
 			<key>allowsRotation</key>
 			<true/>
 			<key>bodyShape</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>collisionCategories</key>
 			<array/>
 			<key>collisionMask</key>
 			<array/>
 			<key>collisionType</key>
-			<string>stone</string>
+			<string>redswitch</string>
 			<key>cornerRadius</key>
-			<real>16</real>
+			<real>0.0</real>
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
-			<true/>
+			<false/>
 			<key>elasticity</key>
 			<real>0.30000001192092896</real>
 			<key>friction</key>
@@ -74,12 +74,43 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>12</real>
-					<real>12</real>
+					<real>0.0</real>
+					<real>0.0</real>
+				</array>
+				<array>
+					<real>0.0</real>
+					<real>117</real>
+				</array>
+				<array>
+					<real>117</real>
+					<real>117</real>
+				</array>
+				<array>
+					<real>117</real>
+					<real>0.0</real>
 				</array>
 			</array>
 			<key>polygons</key>
-			<array/>
+			<array>
+				<array>
+					<array>
+						<real>117</real>
+						<real>0.0</real>
+					</array>
+					<array>
+						<real>117</real>
+						<real>117</real>
+					</array>
+					<array>
+						<real>0.0</real>
+						<real>117</real>
+					</array>
+					<array>
+						<real>0.0</real>
+						<real>0.0</real>
+					</array>
+				</array>
+			</array>
 		</dict>
 		<key>properties</key>
 		<array>
@@ -137,7 +168,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>ResourceAssets/stone.png</string>
+					<string>ResourceAssets/RS-Off.png</string>
 				</array>
 			</dict>
 			<dict>
