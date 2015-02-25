@@ -19,6 +19,8 @@
     CCPhysicsJoint *_mouseJoint;
     CCNode *_currentStone;
     CCPhysicsJoint *_stoneHandJoint;
+    CCNode *_stickdoor;
+    CCNode *_stickNode;
 }
 
 // is called when CCB file has completed loading
@@ -27,8 +29,13 @@
     self.userInteractionEnabled = TRUE;
     CCScene *level = [CCBReader loadAsScene:@"Levels/Level1"];
     [_levelNode addChild:level];
+//    CCNode *stick = [CCBReader load:@"StickDoor"];
+//    [_stickNode addChild:stick];
     _pullbackNode.physicsBody.collisionMask = @[];
-    _physicsNode.debugDraw = TRUE;
+//    _physicsNode.debugDraw = TRUE;
+    if (_stickdoor == nil) {
+        CCLOG(@"nil");
+    }
 }
 
 // called on every touch in this scene
@@ -92,13 +99,17 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone redswitch :(CCNode *)redswitch {
     [redswitch removeFromParent];
+    [self removeChild:_stickdoor cleanup:NO];
+    //[_stickdoor removeFromParent];
     [stone removeFromParent];
+    
     return YES;
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone yellowswitch :(CCNode *)yellowswitch {
     [yellowswitch removeFromParent];
     [stone removeFromParent];
+    
     return YES;
 }
 
