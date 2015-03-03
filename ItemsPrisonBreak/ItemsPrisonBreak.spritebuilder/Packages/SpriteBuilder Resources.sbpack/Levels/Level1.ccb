@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>21</integer>
+	<integer>22</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -1084,7 +1084,7 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>20</integer>
+				<integer>21</integer>
 				<key>baseClass</key>
 				<string>CCBFile</string>
 				<key>children</key>
@@ -1114,8 +1114,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>470.00344848632812</real>
-							<real>150.36767578125</real>
+							<real>468.49990844726562</real>
+							<real>150.72209167480469</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1128,8 +1128,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.45516613125801086</real>
-							<real>0.29196277260780334</real>
+							<real>0.37998971343040466</real>
+							<real>0.29501804709434509</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1148,7 +1148,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>Level</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>

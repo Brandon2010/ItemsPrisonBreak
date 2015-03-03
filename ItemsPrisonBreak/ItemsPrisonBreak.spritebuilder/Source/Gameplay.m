@@ -7,6 +7,7 @@
 //
 
 #import "Gameplay.h"
+#import "Level.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
 
 @implementation Gameplay {
@@ -19,23 +20,19 @@
     CCPhysicsJoint *_mouseJoint;
     CCNode *_currentStone;
     CCPhysicsJoint *_stoneHandJoint;
-    CCNode *_stickdoor;
+    //CCNode *_stickdoor;
     CCNode *_stickNode;
+    Level *level;
 }
 
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB {
     _physicsNode.collisionDelegate = self;
     self.userInteractionEnabled = TRUE;
-    CCScene *level = [CCBReader loadAsScene:@"Levels/Level1"];
+    //level = [CCBReader loadAsScene:@"Levels/Level1"];
+    level = (Level *) [CCBReader load:@"Levels/Level1" owner:self];
     [_levelNode addChild:level];
-//    CCNode *stick = [CCBReader load:@"StickDoor"];
-//    [_stickNode addChild:stick];
     _pullbackNode.physicsBody.collisionMask = @[];
-//    _physicsNode.debugDraw = TRUE;
-    if (_stickdoor == nil) {
-        CCLOG(@"nil");
-    }
 }
 
 // called on every touch in this scene
@@ -99,8 +96,7 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone redswitch :(CCNode *)redswitch {
     [redswitch removeFromParent];
-    [self removeChild:_stickdoor cleanup:NO];
-    //[_stickdoor removeFromParent];
+    [level removeStickDoor];
     [stone removeFromParent];
     
     return YES;
