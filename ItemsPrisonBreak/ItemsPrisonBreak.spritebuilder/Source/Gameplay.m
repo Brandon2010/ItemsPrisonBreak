@@ -8,6 +8,7 @@
 
 #import "Gameplay.h"
 #import "Level.h"
+#import "WinPopup.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
 
 @implementation Gameplay {
@@ -106,9 +107,18 @@
     [yellowswitch removeFromParent];
     [stone removeFromParent];
     
+    WinPopup *popup = (WinPopup *)[CCBReader load:@"WinPopup" owner:self];
+    popup.positionType = CCPositionTypeNormalized;
+    popup.position = ccp(0.25, 0.25);
+    [self addChild:popup];
+
     return YES;
 }
 
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone stickdoor:(CCNode *)stickdoor {
+    [stone removeFromParent];
+    return YES;
+}
 
 - (void)releaseHand {
     if (_mouseJoint != nil)
