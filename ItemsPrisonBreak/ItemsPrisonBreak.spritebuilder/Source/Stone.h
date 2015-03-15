@@ -10,4 +10,6 @@
 
 @interface Stone : CCSprite
 
+@property (nonatomic, assign) BOOL launched;
+
 @end

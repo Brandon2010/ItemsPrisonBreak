@@ -10,6 +10,7 @@
 #import "Level.h"
 #import "WinPopup.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
+#import "Stone.h"
 
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
@@ -19,12 +20,22 @@
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
     CCPhysicsJoint *_mouseJoint;
-    CCNode *_currentStone;
+    
     CCPhysicsJoint *_stoneHandJoint;
     //CCNode *_stickdoor;
     CCNode *_stickNode;
+    
+    // Label the number of remainde items
+    CCLabelTTF *_itemsLeft;
+    int _stone;
+    
     Level *level;
+    
+    // Record the progress of current stone
+    Stone *_currentStone;
 }
+
+static const float MIN_SPEED = 10.f;
 
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB {
@@ -36,6 +47,10 @@
     [_levelNode addChild:level];
     _pullbackNode.physicsBody.collisionMask = @[];
     _mouseJointNode.physicsBody.collisionMask = @[];
+    
+    // Initialize the stone left
+    _stone = 5;
+    _itemsLeft.string = [NSString stringWithFormat:@"%d", _stone];
 }
 
 // called on every touch in this scene
@@ -51,20 +66,22 @@
         // setup a spring joint between the mouseJointNode and the escaperHand
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_escaperHand.physicsBody anchorA:ccp(0, 0) anchorB:ccp(9.8, 9.3) restLength:0.f stiffness:3000.f damping:60.f];
         
-        // create a stone from the ccb-file
-        _currentStone = [CCBReader load:@"Stone"];
-        // initially position it on the scoop. 34,138 is the position in the node space of the _catapultArm
-        CGPoint stonePosition = [_escaperHand convertToWorldSpace:ccp(20.5, 35.5)];
-        // transform the world position to the node space to which the penguin will be added (_physicsNode)
-        _currentStone.position = [_physicsNode convertToNodeSpace:stonePosition];
-        _currentStone.scale = 0.5;
-        // add it to the physics world
-        [_physicsNode addChild:_currentStone];
-        // we don't want the penguin to rotate in the scoop
-        _currentStone.physicsBody.allowsRotation = FALSE;
-        
-        // create a joint to keep the penguin fixed to the scoop until the catapult is released
-        _stoneHandJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentStone.physicsBody bodyB:_escaperHand.physicsBody anchorA:_currentStone.anchorPointInPoints];
+        if (_stone > 0) {
+            // create a stone from the ccb-file
+            _currentStone = (Stone *)[CCBReader load:@"Stone"];
+            // initially position it on the scoop. 34,138 is the position in the node space of the _catapultArm
+            CGPoint stonePosition = [_escaperHand convertToWorldSpace:ccp(20.5, 35.5)];
+            // transform the world position to the node space to which the penguin will be added (_physicsNode)
+            _currentStone.position = [_physicsNode convertToNodeSpace:stonePosition];
+            _currentStone.scale = 0.5;
+            // add it to the physics world
+            [_physicsNode addChild:_currentStone];
+            // we don't want the penguin to rotate in the scoop
+            _currentStone.physicsBody.allowsRotation = FALSE;
+            
+            // create a joint to keep the stone fixed to the scoop until the catapult is released
+            _stoneHandJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentStone.physicsBody bodyB:_escaperHand.physicsBody anchorA:_currentStone.anchorPointInPoints];
+        }
     }
 }
 
@@ -135,14 +152,47 @@
         
         // after snapping rotation is fine
         _currentStone.physicsBody.allowsRotation = TRUE;
+        _currentStone.launched = TRUE;
         
-        // follow the flying penguin
-        //CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
-        //[_contentNode runAction:follow];
-        // follow the flying penguin
-//        _followPenguin = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
-//        [_contentNode runAction:_followPenguin];
-//        _currentStone.launched = TRUE;
+        if (_stone > 0) {
+            _stone--;
+            _itemsLeft.string = [NSString stringWithFormat:@"%d", _stone];
+        }
+    }
+}
+
+- (void) popupRetry {
+    CCLOG(@"Popup");
+}
+
+- (void)retry {
+    // reload this level
+    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
+}
+
+- (void)update:(CCTime)delta
+{
+    if (_currentStone.launched && _stone <= 0) {
+        
+        // if speed is below minimum speed, assume this attempt is over
+        if (ccpLength(_currentStone.physicsBody.velocity) < MIN_SPEED){
+            [self popupRetry];
+            return;
+        }
+        
+        int xMin = _currentStone.boundingBox.origin.x;
+        
+        if (xMin < self.boundingBox.origin.x) {
+            [self popupRetry];
+            return;
+        }
+        
+        int xMax = xMin + _currentStone.boundingBox.size.width;
+        
+        if (xMax > (self.boundingBox.origin.x + self.boundingBox.size.width)) {
+            [self popupRetry];
+            return;
+        }
     }
 }
 
