@@ -29,11 +29,13 @@
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB {
     _physicsNode.collisionDelegate = self;
+    //_physicsNode.debugDraw = TRUE;
     self.userInteractionEnabled = TRUE;
     //level = [CCBReader loadAsScene:@"Levels/Level1"];
     level = (Level *) [CCBReader load:@"Levels/Level1" owner:self];
     [_levelNode addChild:level];
     _pullbackNode.physicsBody.collisionMask = @[];
+    _mouseJointNode.physicsBody.collisionMask = @[];
 }
 
 // called on every touch in this scene
@@ -75,12 +77,12 @@
 
 - (void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
-    [self releaseHand];
+    [self releaseHead];
 }
 
 - (void)touchCancelled:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
-    [self releaseHand];
+    [self releaseHead];
 }
 
 - (void)launchStone {
@@ -116,11 +118,11 @@
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone stickdoor:(CCNode *)stickdoor {
-    [stone removeFromParent];
+    //[stone removeFromParent];
     return YES;
 }
 
-- (void)releaseHand {
+- (void)releaseHead {
     if (_mouseJoint != nil)
     {
         // releases the joint and lets the catapult snap back
