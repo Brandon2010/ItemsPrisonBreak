@@ -10,6 +10,8 @@
 
 @interface Level : CCNode
 
+@property (nonatomic, copy) NSString *nextLevelName;
+
 - (void) removeStickDoor;
 
 @end

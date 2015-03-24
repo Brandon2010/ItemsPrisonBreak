@@ -9,6 +9,7 @@
 #import "Gameplay.h"
 #import "Level.h"
 #import "WinPopup.h"
+#import "RetryPopup.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
 #import "Stone.h"
 
@@ -33,6 +34,9 @@
     
     // Record the progress of current stone
     Stone *_currentStone;
+    
+    // Parameters used to check success
+    BOOL _success;
 }
 
 static const float MIN_SPEED = 10.f;
@@ -50,6 +54,7 @@ static const float MIN_SPEED = 10.f;
     
     // Initialize the stone left
     _stone = 5;
+    _success = FALSE;
     _itemsLeft.string = [NSString stringWithFormat:@"%d", _stone];
 }
 
@@ -69,7 +74,7 @@ static const float MIN_SPEED = 10.f;
         if (_stone > 0) {
             // create a stone from the ccb-file
             _currentStone = (Stone *)[CCBReader load:@"Stone"];
-            // initially position it on the scoop. 34,138 is the position in the node space of the _catapultArm
+            // initially position it on the scoop.
             CGPoint stonePosition = [_escaperHand convertToWorldSpace:ccp(20.5, 35.5)];
             // transform the world position to the node space to which the penguin will be added (_physicsNode)
             _currentStone.position = [_physicsNode convertToNodeSpace:stonePosition];
@@ -162,17 +167,28 @@ static const float MIN_SPEED = 10.f;
 }
 
 - (void) popupRetry {
-    CCLOG(@"Popup");
+    RetryPopup *popup = (RetryPopup *)[CCBReader load:@"RetryPopup" owner:self];
+    popup.positionType = CCPositionTypeNormalized;
+    popup.position = ccp(0.25, 0.25);
+    [self addChild:popup];
+    _stone = 5;
 }
 
 - (void)retry {
     // reload this level
-    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
+    CCScene *restartScene = [CCBReader loadAsScene:@"Gameplay"];
+    CCTransition *transition = [CCTransition transitionFadeWithDuration:0.8f];
+    [[CCDirector sharedDirector] presentScene:restartScene withTransition:transition];
 }
 
 - (void)update:(CCTime)delta
 {
     if (_currentStone.launched && _stone <= 0) {
+        
+        if (_success) {
+            CCLOG(@"success");
+            return;
+        }
         
         // if speed is below minimum speed, assume this attempt is over
         if (ccpLength(_currentStone.physicsBody.velocity) < MIN_SPEED){
@@ -193,7 +209,21 @@ static const float MIN_SPEED = 10.f;
             [self popupRetry];
             return;
         }
+        
+        int yMin = _currentStone.boundingBox.origin.y;
+        if (yMin < self.boundingBox.origin.y) {
+            [self popupRetry];
+            return;
+        }
+        
+        int yMax = _currentStone.boundingBox.size.height;
+        if (yMax > (self.boundingBox.origin.y + self.boundingBox.size.height)) {
+            [self popupRetry];
+            return;
+        }
     }
 }
+
+
 
 @end
