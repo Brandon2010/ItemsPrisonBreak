@@ -7,8 +7,9 @@
 //
 
 #import "CCSprite.h"
+#import "Item.h"
 
-@interface Stone : CCSprite
+@interface Stone : Item
 
 @property (nonatomic, assign) BOOL launched;
 

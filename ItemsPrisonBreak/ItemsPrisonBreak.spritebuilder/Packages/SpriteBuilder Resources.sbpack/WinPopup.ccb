@@ -415,8 +415,8 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>1</integer>
+							<string>loadNextLevel</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -670,6 +670,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

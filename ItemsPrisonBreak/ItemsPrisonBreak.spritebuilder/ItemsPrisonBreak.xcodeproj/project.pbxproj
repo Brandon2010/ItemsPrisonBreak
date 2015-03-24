@@ -10,6 +10,8 @@
 		404441DE1A9AE2AB00942654 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441DD1A9AE2AB00942654 /* Stone.m */; };
 		404441E51A9AE6BA00942654 /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441E41A9AE6BA00942654 /* Gameplay.m */; };
 		40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2757D1AC1EF8000110D41 /* RetryPopup.m */; };
+		40B275891AC2080400110D41 /* Coin.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B275881AC2080400110D41 /* Coin.m */; };
+		40B2758C1AC2241A00110D41 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2758B1AC2241A00110D41 /* Item.m */; };
 		40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */; };
 		40D4C9851A9D1042000E8AA6 /* RedSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C9841A9D1042000E8AA6 /* RedSwitch.m */; };
 		40D7183D1A9D331D0097862A /* StickDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D7183C1A9D331D0097862A /* StickDoor.m */; };
@@ -163,6 +165,10 @@
 		404441E41A9AE6BA00942654 /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gameplay.m; path = Source/Gameplay.m; sourceTree = "<group>"; };
 		40B2757C1AC1EF8000110D41 /* RetryPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RetryPopup.h; path = Source/RetryPopup.h; sourceTree = "<group>"; };
 		40B2757D1AC1EF8000110D41 /* RetryPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RetryPopup.m; path = Source/RetryPopup.m; sourceTree = "<group>"; };
+		40B275871AC2080400110D41 /* Coin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Coin.h; path = Source/Coin.h; sourceTree = "<group>"; };
+		40B275881AC2080400110D41 /* Coin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Coin.m; path = Source/Coin.m; sourceTree = "<group>"; };
+		40B2758A1AC2241A00110D41 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Source/Item.h; sourceTree = "<group>"; };
+		40B2758B1AC2241A00110D41 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Source/Item.m; sourceTree = "<group>"; };
 		40D4C97E1A9D101E000E8AA6 /* YellowSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YellowSwitch.h; path = Source/YellowSwitch.h; sourceTree = "<group>"; };
 		40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YellowSwitch.m; path = Source/YellowSwitch.m; sourceTree = "<group>"; };
 		40D4C9831A9D1042000E8AA6 /* RedSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RedSwitch.h; path = Source/RedSwitch.h; sourceTree = "<group>"; };
@@ -460,13 +466,25 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				40D7183B1A9D331D0097862A /* StickDoor.h */,
+				40D7183C1A9D331D0097862A /* StickDoor.m */,
+				40F943EF1AA582EC00A293C7 /* Level.h */,
+				40F943F41AA5885400A293C7 /* WinPopup.h */,
+				40B2757C1AC1EF8000110D41 /* RetryPopup.h */,
+				40B2757D1AC1EF8000110D41 /* RetryPopup.m */,
+				40F943F51AA5885400A293C7 /* WinPopup.m */,
+				40F943F01AA582EC00A293C7 /* Level.m */,
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
 				404441E31A9AE6BA00942654 /* Gameplay.h */,
 				404441E41A9AE6BA00942654 /* Gameplay.m */,
+				40B2758A1AC2241A00110D41 /* Item.h */,
+				40B2758B1AC2241A00110D41 /* Item.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 				404441DC1A9AE2AB00942654 /* Stone.h */,
+				40B275871AC2080400110D41 /* Coin.h */,
+				40B275881AC2080400110D41 /* Coin.m */,
 				40D4C97E1A9D101E000E8AA6 /* YellowSwitch.h */,
 				40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */,
 				40D4C9831A9D1042000E8AA6 /* RedSwitch.h */,
@@ -500,14 +518,6 @@
 		B77F1B2517B978D7009739AE = {
 			isa = PBXGroup;
 			children = (
-				40D7183B1A9D331D0097862A /* StickDoor.h */,
-				40D7183C1A9D331D0097862A /* StickDoor.m */,
-				40F943EF1AA582EC00A293C7 /* Level.h */,
-				40F943F41AA5885400A293C7 /* WinPopup.h */,
-				40B2757C1AC1EF8000110D41 /* RetryPopup.h */,
-				40B2757D1AC1EF8000110D41 /* RetryPopup.m */,
-				40F943F51AA5885400A293C7 /* WinPopup.m */,
-				40F943F01AA582EC00A293C7 /* Level.m */,
 				B737893C1807616C0076A88C /* Source */,
 				B77F1B4617B978D7009739AE /* Resources */,
 				9222E2B918734FF800A246C7 /* libs */,
@@ -856,8 +866,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B2758C1AC2241A00110D41 /* Item.m in Sources */,
 				40D7183D1A9D331D0097862A /* StickDoor.m in Sources */,
 				40F943F61AA5885400A293C7 /* WinPopup.m in Sources */,
+				40B275891AC2080400110D41 /* Coin.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */,
 				40F943F11AA582EC00A293C7 /* Level.m in Sources */,

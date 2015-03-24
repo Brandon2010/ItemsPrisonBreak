@@ -13,10 +13,12 @@
 #import "CCPhysics+ObjectiveChipmunk.h"
 #import "Stone.h"
 
+static NSString * const kFirstLevel = @"Levels/Level1";
+static NSString *selectedLevel = @"Levels/Level1";
+
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
     CCNode *_escaperHand;
-    CCNode *_levelNode;
     CCNode *_contentNode;
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
@@ -30,7 +32,9 @@
     CCLabelTTF *_itemsLeft;
     int _stone;
     
+    // Control Level Progress
     Level *level;
+    CCNode *_levelNode;
     
     // Record the progress of current stone
     Stone *_currentStone;
@@ -46,8 +50,7 @@ static const float MIN_SPEED = 10.f;
     _physicsNode.collisionDelegate = self;
     //_physicsNode.debugDraw = TRUE;
     self.userInteractionEnabled = TRUE;
-    //level = [CCBReader loadAsScene:@"Levels/Level1"];
-    level = (Level *) [CCBReader load:@"Levels/Level1" owner:self];
+    level = (Level *) [CCBReader load:selectedLevel owner:self];
     [_levelNode addChild:level];
     _pullbackNode.physicsBody.collisionMask = @[];
     _mouseJointNode.physicsBody.collisionMask = @[];
@@ -57,6 +60,28 @@ static const float MIN_SPEED = 10.f;
     _success = FALSE;
     _itemsLeft.string = [NSString stringWithFormat:@"%d", _stone];
 }
+
+#pragma mark - Level completion
+
+- (void)loadNextLevel {
+    CCLOG(@"NextLevel!!!!");
+    selectedLevel = level.nextLevelName;
+    
+    CCScene *nextScene = nil;
+    
+    if (selectedLevel) {
+        nextScene = [CCBReader loadAsScene:@"Gameplay"];
+    } else {
+        selectedLevel = kFirstLevel;
+        nextScene = [CCBReader loadAsScene:@"StartScene"];
+    }
+    
+    CCTransition *transition = [CCTransition transitionFadeWithDuration:0.8f];
+    [[CCDirector sharedDirector] presentScene:nextScene withTransition:transition];
+    CCLOG(@"NextLevel!!!!");
+}
+
+#pragma mark - Touch Handling
 
 // called on every touch in this scene
 - (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event {
@@ -181,6 +206,7 @@ static const float MIN_SPEED = 10.f;
     [[CCDirector sharedDirector] presentScene:restartScene withTransition:transition];
 }
 
+#pragma mark - Update
 - (void)update:(CCTime)delta
 {
     if (_currentStone.launched && _stone <= 0) {
