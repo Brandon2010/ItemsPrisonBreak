@@ -46,7 +46,14 @@ static NSString *coin_text = @"Coin";
     
     // Switch Button
     CCButton *_switch;
+    
+    // Two Arrays to control the switching
+    NSArray *items;
+    NSArray *itemsCount;
+    int totalItems;
+    int currentItem;
 }
+
 
 static const float MIN_SPEED = 10.f;
 
@@ -68,10 +75,16 @@ static const float MIN_SPEED = 10.f;
     // Hide switch button in first level
     if ([selectedLevel  isEqual: @"Levels/Level1"]) {
         _switch.visible = FALSE;
+        totalItems = 1;
     } else {
         _switch.visible = TRUE;
         _switch.title = coin_text;
+        totalItems = 2;
     }
+    
+    items = [NSArray arrayWithObjects:@"Stone", @"Coin", nil];
+    itemsCount = [NSArray arrayWithObjects:@5, @5, nil];
+    currentItem = 0;
 }
 
 #pragma mark - Level completion
@@ -145,17 +158,17 @@ static const float MIN_SPEED = 10.f;
     [self releaseHead];
 }
 
-- (void)launchStone {
-    CCNode* stone = [CCBReader load:@"Stone"];
-    stone.position = ccpAdd(_escaperHand.position, ccp(16, 15));
-    stone.scale = 0.5;
-    
-    [_physicsNode addChild:stone];
-    
-    CGPoint launchDirection = ccp(1, 0);
-    CGPoint force = ccpMult(launchDirection, 8000);
-    [stone.physicsBody applyForce:force];
-}
+//- (void)launchStone {
+//    CCNode* stone = [CCBReader load:@"Stone"];
+//    stone.position = ccpAdd(_escaperHand.position, ccp(16, 15));
+//    stone.scale = 0.5;
+//    
+//    [_physicsNode addChild:stone];
+//    
+//    CGPoint launchDirection = ccp(1, 0);
+//    CGPoint force = ccpMult(launchDirection, 8000);
+//    [stone.physicsBody applyForce:force];
+//}
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone redswitch :(CCNode *)redswitch {
     [redswitch removeFromParent];
@@ -265,8 +278,12 @@ static const float MIN_SPEED = 10.f;
 
 #pragma mark - Update
 -(void) switchItem {
-    CCLOG(@"Switch");
-    _switch.title = stone_text;
+    
+    currentItem++;
+    if (currentItem >= totalItems) {
+        currentItem = 0;
+    }
+    _switch.title = [items objectAtIndex:currentItem];
 }
 
 @end
