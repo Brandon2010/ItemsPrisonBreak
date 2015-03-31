@@ -15,6 +15,8 @@
 
 static NSString * const kFirstLevel = @"Levels/Level1";
 static NSString *selectedLevel = @"Levels/Level1";
+static NSString *stone_text = @"Stone";
+static NSString *coin_text = @"Coin";
 
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
@@ -37,10 +39,13 @@ static NSString *selectedLevel = @"Levels/Level1";
     CCNode *_levelNode;
     
     // Record the progress of current stone
-    Stone *_currentStone;
+    Item *_currentItem;
     
     // Parameters used to check success
     BOOL _success;
+    
+    // Switch Button
+    CCButton *_switch;
 }
 
 static const float MIN_SPEED = 10.f;
@@ -59,6 +64,14 @@ static const float MIN_SPEED = 10.f;
     _stone = 5;
     _success = FALSE;
     _itemsLeft.string = [NSString stringWithFormat:@"%d", _stone];
+    
+    // Hide switch button in first level
+    if ([selectedLevel  isEqual: @"Levels/Level1"]) {
+        _switch.visible = FALSE;
+    } else {
+        _switch.visible = TRUE;
+        _switch.title = coin_text;
+    }
 }
 
 #pragma mark - Level completion
@@ -98,19 +111,19 @@ static const float MIN_SPEED = 10.f;
         
         if (_stone > 0) {
             // create a stone from the ccb-file
-            _currentStone = (Stone *)[CCBReader load:@"Stone"];
+            _currentItem = (Stone *)[CCBReader load:@"Stone"];
             // initially position it on the scoop.
             CGPoint stonePosition = [_escaperHand convertToWorldSpace:ccp(20.5, 35.5)];
             // transform the world position to the node space to which the penguin will be added (_physicsNode)
-            _currentStone.position = [_physicsNode convertToNodeSpace:stonePosition];
-            _currentStone.scale = 0.5;
+            _currentItem.position = [_physicsNode convertToNodeSpace:stonePosition];
+            _currentItem.scale = 0.5;
             // add it to the physics world
-            [_physicsNode addChild:_currentStone];
+            [_physicsNode addChild:_currentItem];
             // we don't want the penguin to rotate in the scoop
-            _currentStone.physicsBody.allowsRotation = FALSE;
+            _currentItem.physicsBody.allowsRotation = FALSE;
             
             // create a joint to keep the stone fixed to the scoop until the catapult is released
-            _stoneHandJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentStone.physicsBody bodyB:_escaperHand.physicsBody anchorA:_currentStone.anchorPointInPoints];
+            _stoneHandJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentItem.physicsBody bodyB:_escaperHand.physicsBody anchorA:_currentItem.anchorPointInPoints];
         }
     }
 }
@@ -181,8 +194,8 @@ static const float MIN_SPEED = 10.f;
         _stoneHandJoint = nil;
         
         // after snapping rotation is fine
-        _currentStone.physicsBody.allowsRotation = TRUE;
-        _currentStone.launched = TRUE;
+        _currentItem.physicsBody.allowsRotation = TRUE;
+        _currentItem.launched = TRUE;
         
         if (_stone > 0) {
             _stone--;
@@ -209,7 +222,7 @@ static const float MIN_SPEED = 10.f;
 #pragma mark - Update
 - (void)update:(CCTime)delta
 {
-    if (_currentStone.launched && _stone <= 0) {
+    if (_currentItem.launched && _stone <= 0) {
         
         if (_success) {
             CCLOG(@"success");
@@ -217,32 +230,32 @@ static const float MIN_SPEED = 10.f;
         }
         
         // if speed is below minimum speed, assume this attempt is over
-        if (ccpLength(_currentStone.physicsBody.velocity) < MIN_SPEED){
+        if (ccpLength(_currentItem.physicsBody.velocity) < MIN_SPEED){
             [self popupRetry];
             return;
         }
         
-        int xMin = _currentStone.boundingBox.origin.x;
+        int xMin = _currentItem.boundingBox.origin.x;
         
         if (xMin < self.boundingBox.origin.x) {
             [self popupRetry];
             return;
         }
         
-        int xMax = xMin + _currentStone.boundingBox.size.width;
+        int xMax = xMin + _currentItem.boundingBox.size.width;
         
         if (xMax > (self.boundingBox.origin.x + self.boundingBox.size.width)) {
             [self popupRetry];
             return;
         }
         
-        int yMin = _currentStone.boundingBox.origin.y;
+        int yMin = _currentItem.boundingBox.origin.y;
         if (yMin < self.boundingBox.origin.y) {
             [self popupRetry];
             return;
         }
         
-        int yMax = _currentStone.boundingBox.size.height;
+        int yMax = _currentItem.boundingBox.size.height;
         if (yMax > (self.boundingBox.origin.y + self.boundingBox.size.height)) {
             [self popupRetry];
             return;
@@ -250,6 +263,10 @@ static const float MIN_SPEED = 10.f;
     }
 }
 
-
+#pragma mark - Update
+-(void) switchItem {
+    CCLOG(@"Switch");
+    _switch.title = stone_text;
+}
 
 @end

@@ -10,4 +10,6 @@
 
 @interface Item : CCSprite
 
+@property (nonatomic, assign) BOOL launched;
+
 @end

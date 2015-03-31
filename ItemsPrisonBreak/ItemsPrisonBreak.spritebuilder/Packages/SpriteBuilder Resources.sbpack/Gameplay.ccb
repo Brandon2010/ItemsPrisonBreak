@@ -1405,7 +1405,7 @@
 								<key>displayName</key>
 								<string>CCButton</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>_switch</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -1425,8 +1425,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>36.5</real>
-											<real>303.00003051757812</real>
+											<real>83</real>
+											<real>302.00003051757812</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -1463,7 +1463,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string></string>
+											<string>switchItem</string>
 											<integer>1</integer>
 										</array>
 									</dict>
@@ -1718,6 +1718,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1914,7 +1916,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>90.999984741210938</real>
+							<real>25.999984741210938</real>
 							<real>298</real>
 							<integer>0</integer>
 							<integer>0</integer>

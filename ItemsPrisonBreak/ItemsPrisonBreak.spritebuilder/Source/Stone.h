@@ -11,6 +11,4 @@
 
 @interface Stone : Item
 
-@property (nonatomic, assign) BOOL launched;
-
 @end

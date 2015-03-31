@@ -7,7 +7,8 @@
 //
 
 #import "CCSprite.h"
+#import "Item.h"
 
-@interface Coin : CCSprite
+@interface Coin : Item
 
 @end
