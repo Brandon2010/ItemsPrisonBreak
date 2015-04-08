@@ -1,0 +1,7 @@
+assets:
+1. Police: http://www.twitchstarter.com/twitch-tutorials.php?keyword=2d%20animation%20for%20games
+2. Stone: http://opengameart.org/content/2d-platform-ground-stone-tiles
+3. Player: http://opengameart.org/content/wesnoth-generic-human
+4. Switches: https://www.makeschool.com/academy/art/object/simple-switches
+5. Coins:https://www.makeschool.com/academy/art/object/coins
+6. Switching Button: https://www.makeschool.com/academy/art/interface/buttons-2

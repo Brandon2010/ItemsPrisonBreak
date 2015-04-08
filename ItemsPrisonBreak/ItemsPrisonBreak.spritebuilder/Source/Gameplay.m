@@ -12,6 +12,8 @@
 #import "RetryPopup.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
 #import "Stone.h"
+#import "Coin.h"
+#import "Police.h"
 
 static NSString * const kFirstLevel = @"Levels/Level1";
 static NSString *selectedLevel = @"Levels/Level1";
@@ -49,7 +51,7 @@ static NSString *coin_text = @"Coin";
     
     // Two Arrays to control the switching
     NSArray *items;
-    NSArray *itemsCount;
+    int itemsCount[2];
     int totalItems;
     int currentItem;
 }
@@ -68,23 +70,27 @@ static const float MIN_SPEED = 10.f;
     _mouseJointNode.physicsBody.collisionMask = @[];
     
     // Initialize the stone left
-    _stone = 5;
+    items = [NSArray arrayWithObjects:@"Stone", @"Coin", nil];
+    //    itemsCount = [NSArray arrayWithObjects:@5, @5, nil];
+    for (int i=0; i<2; i++) {
+        itemsCount[i] = 5;
+    }
+    currentItem = 0;
+
+    _stone = 2;
     _success = FALSE;
-    _itemsLeft.string = [NSString stringWithFormat:@"%d", _stone];
+    _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[0]];
     
     // Hide switch button in first level
-    if ([selectedLevel  isEqual: @"Levels/Level1"]) {
+    if ([selectedLevel isEqual: @"Levels/Level1"]) {
         _switch.visible = FALSE;
         totalItems = 1;
     } else {
         _switch.visible = TRUE;
-        _switch.title = coin_text;
+        _switch.title = stone_text;
         totalItems = 2;
     }
     
-    items = [NSArray arrayWithObjects:@"Stone", @"Coin", nil];
-    itemsCount = [NSArray arrayWithObjects:@5, @5, nil];
-    currentItem = 0;
 }
 
 #pragma mark - Level completion
@@ -122,14 +128,20 @@ static const float MIN_SPEED = 10.f;
         // setup a spring joint between the mouseJointNode and the escaperHand
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_escaperHand.physicsBody anchorA:ccp(0, 0) anchorB:ccp(9.8, 9.3) restLength:0.f stiffness:3000.f damping:60.f];
         
-        if (_stone > 0) {
-            // create a stone from the ccb-file
-            _currentItem = (Stone *)[CCBReader load:@"Stone"];
+        if (itemsCount[currentItem] > 0) {
+            // create a item from the ccb-file
+            if (currentItem == 0) {
+                _currentItem = (Stone *)[CCBReader load:@"Stone"];
+                _currentItem.scale = 0.5;
+            } else if (currentItem == 1) {
+                _currentItem = (Coin *)[CCBReader load:@"Coin"];
+                _currentItem.scale = 0.3;
+            }
             // initially position it on the scoop.
-            CGPoint stonePosition = [_escaperHand convertToWorldSpace:ccp(20.5, 35.5)];
+            CGPoint itemPosition = [_escaperHand convertToWorldSpace:ccp(20.5, 35.5)];
             // transform the world position to the node space to which the penguin will be added (_physicsNode)
-            _currentItem.position = [_physicsNode convertToNodeSpace:stonePosition];
-            _currentItem.scale = 0.5;
+            _currentItem.position = [_physicsNode convertToNodeSpace:itemPosition];
+            
             // add it to the physics world
             [_physicsNode addChild:_currentItem];
             // we don't want the penguin to rotate in the scoop
@@ -195,6 +207,15 @@ static const float MIN_SPEED = 10.f;
     return YES;
 }
 
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coin:(CCNode *)coin police:(CCNode *)police {
+//    police.rotationalSkewX = 180;
+    //police.skewX = 180.f;
+    Police *p = (Police *) police;
+    [p flipPolice];
+//    police.rotationalSkewX = 180.f;
+    return YES;
+}
+
 - (void)releaseHead {
     if (_mouseJoint != nil)
     {
@@ -210,9 +231,13 @@ static const float MIN_SPEED = 10.f;
         _currentItem.physicsBody.allowsRotation = TRUE;
         _currentItem.launched = TRUE;
         
-        if (_stone > 0) {
-            _stone--;
-            _itemsLeft.string = [NSString stringWithFormat:@"%d", _stone];
+        if (itemsCount[currentItem] > 0) {
+            //_stone--;
+            itemsCount[currentItem]--;
+            if (itemsCount[currentItem] == 0) {
+                _stone--;
+            }
+            _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[currentItem]];
         }
     }
 }
@@ -283,7 +308,10 @@ static const float MIN_SPEED = 10.f;
     if (currentItem >= totalItems) {
         currentItem = 0;
     }
+    CCLOG(@"h%d",currentItem);
     _switch.title = [items objectAtIndex:currentItem];
+//    _itemsLeft.string = [NSString stringWithFormat:@"%@", [itemsCount objectAtIndex:currentItem]];
+      _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[currentItem]];
 }
 
 @end
