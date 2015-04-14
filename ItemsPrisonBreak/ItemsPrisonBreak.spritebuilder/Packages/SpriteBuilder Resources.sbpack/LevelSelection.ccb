@@ -146,8 +146,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -219,7 +217,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>startOne</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -545,7 +543,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>startTwo</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -871,7 +869,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>startThree</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1197,7 +1195,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>startFour</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1523,7 +1521,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>startFive</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1778,10 +1776,12 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>LevelSelection</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>

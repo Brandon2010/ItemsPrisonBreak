@@ -343,4 +343,8 @@ static const float MIN_SPEED = 10.f;
       _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[currentItem]];
 }
 
++(void) setSelectedLevel: (NSString *) level {
+    selectedLevel = level;
+}
+
 @end

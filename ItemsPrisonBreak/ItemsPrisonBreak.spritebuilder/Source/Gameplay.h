@@ -10,4 +10,6 @@
 
 @interface Gameplay : CCNode <CCPhysicsCollisionDelegate>
 
++(void) setSelectedLevel: (NSString *) level;
+
 @end

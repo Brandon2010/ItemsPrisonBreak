@@ -3,8 +3,8 @@
 @implementation MainScene
 
 - (void) start {
-    CCScene *gameplayScene = [CCBReader loadAsScene:@"Gameplay"];
-    [[CCDirector sharedDirector] replaceScene:gameplayScene];
+    CCScene *selectionScene = [CCBReader loadAsScene:@"LevelSelection"];
+    [[CCDirector sharedDirector] replaceScene:selectionScene];
 }
 
 @end
