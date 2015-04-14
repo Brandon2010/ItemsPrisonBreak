@@ -13,11 +13,13 @@
 		40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2757D1AC1EF8000110D41 /* RetryPopup.m */; };
 		40B275891AC2080400110D41 /* Coin.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B275881AC2080400110D41 /* Coin.m */; };
 		40B2758C1AC2241A00110D41 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2758B1AC2241A00110D41 /* Item.m */; };
+		40B95B1A1AD7594600F34BC8 /* PolicePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B95B191AD7594600F34BC8 /* PolicePopup.m */; };
 		40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */; };
 		40D4C9851A9D1042000E8AA6 /* RedSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C9841A9D1042000E8AA6 /* RedSwitch.m */; };
 		40D7183D1A9D331D0097862A /* StickDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D7183C1A9D331D0097862A /* StickDoor.m */; };
 		40F943F11AA582EC00A293C7 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F943F01AA582EC00A293C7 /* Level.m */; };
 		40F943F61AA5885400A293C7 /* WinPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F943F51AA5885400A293C7 /* WinPopup.m */; };
+		40FB92581ADD85600051DCD2 /* LevelSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB92571ADD85600051DCD2 /* LevelSelection.m */; };
 		5B121030197484FA004C1E1D /* ItemsPrisonBreakActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* ItemsPrisonBreakActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
@@ -172,6 +174,8 @@
 		40B275881AC2080400110D41 /* Coin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Coin.m; path = Source/Coin.m; sourceTree = "<group>"; };
 		40B2758A1AC2241A00110D41 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Source/Item.h; sourceTree = "<group>"; };
 		40B2758B1AC2241A00110D41 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Source/Item.m; sourceTree = "<group>"; };
+		40B95B181AD7594600F34BC8 /* PolicePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PolicePopup.h; path = Source/PolicePopup.h; sourceTree = "<group>"; };
+		40B95B191AD7594600F34BC8 /* PolicePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PolicePopup.m; path = Source/PolicePopup.m; sourceTree = "<group>"; };
 		40D4C97E1A9D101E000E8AA6 /* YellowSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YellowSwitch.h; path = Source/YellowSwitch.h; sourceTree = "<group>"; };
 		40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YellowSwitch.m; path = Source/YellowSwitch.m; sourceTree = "<group>"; };
 		40D4C9831A9D1042000E8AA6 /* RedSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RedSwitch.h; path = Source/RedSwitch.h; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 		40F943F01AA582EC00A293C7 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level.m; path = Source/Level.m; sourceTree = "<group>"; };
 		40F943F41AA5885400A293C7 /* WinPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WinPopup.h; path = Source/WinPopup.h; sourceTree = "<group>"; };
 		40F943F51AA5885400A293C7 /* WinPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WinPopup.m; path = Source/WinPopup.m; sourceTree = "<group>"; };
+		40FB92561ADD85600051DCD2 /* LevelSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LevelSelection.h; path = Source/LevelSelection.h; sourceTree = "<group>"; };
+		40FB92571ADD85600051DCD2 /* LevelSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LevelSelection.m; path = Source/LevelSelection.m; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -474,11 +480,15 @@
 				40F943EF1AA582EC00A293C7 /* Level.h */,
 				40F943F41AA5885400A293C7 /* WinPopup.h */,
 				40B2757C1AC1EF8000110D41 /* RetryPopup.h */,
+				40B95B181AD7594600F34BC8 /* PolicePopup.h */,
+				40B95B191AD7594600F34BC8 /* PolicePopup.m */,
 				40B2757D1AC1EF8000110D41 /* RetryPopup.m */,
 				40F943F51AA5885400A293C7 /* WinPopup.m */,
 				40F943F01AA582EC00A293C7 /* Level.m */,
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				B7378992180767190076A88C /* MainScene.h */,
+				40FB92561ADD85600051DCD2 /* LevelSelection.h */,
+				40FB92571ADD85600051DCD2 /* LevelSelection.m */,
 				B7378993180767190076A88C /* MainScene.m */,
 				404441E31A9AE6BA00942654 /* Gameplay.h */,
 				404441E41A9AE6BA00942654 /* Gameplay.m */,
@@ -880,8 +890,10 @@
 				40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */,
 				40F943F11AA582EC00A293C7 /* Level.m in Sources */,
 				404441E51A9AE6BA00942654 /* Gameplay.m in Sources */,
+				40FB92581ADD85600051DCD2 /* LevelSelection.m in Sources */,
 				40D4C9851A9D1042000E8AA6 /* RedSwitch.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
+				40B95B1A1AD7594600F34BC8 /* PolicePopup.m in Sources */,
 				40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				404441DE1A9AE2AB00942654 /* Stone.m in Sources */,

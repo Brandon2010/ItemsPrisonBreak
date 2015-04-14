@@ -14,6 +14,7 @@
 #import "Stone.h"
 #import "Coin.h"
 #import "Police.h"
+#import "PolicePopup.h"
 
 static NSString * const kFirstLevel = @"Levels/Level1";
 static NSString *selectedLevel = @"Levels/Level1";
@@ -54,6 +55,9 @@ static NSString *coin_text = @"Coin";
     int itemsCount[2];
     int totalItems;
     int currentItem;
+    
+    // Check the police has been distracted
+    bool policeDistracted;
 }
 
 
@@ -85,10 +89,12 @@ static const float MIN_SPEED = 10.f;
     if ([selectedLevel isEqual: @"Levels/Level1"]) {
         _switch.visible = FALSE;
         totalItems = 1;
+        policeDistracted = true;
     } else {
         _switch.visible = TRUE;
         _switch.title = stone_text;
         totalItems = 2;
+        policeDistracted = false;
     }
     
 }
@@ -183,9 +189,14 @@ static const float MIN_SPEED = 10.f;
 //}
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone redswitch :(CCNode *)redswitch {
-    [redswitch removeFromParent];
-    [level removeStickDoor];
-    [stone removeFromParent];
+    if (policeDistracted) {
+        [redswitch removeFromParent];
+        [level removeStickDoor];
+        [stone removeFromParent];
+    } else {
+        CCLOG(@"weird");
+        [self popupRetryPolice];
+    }
     
     return YES;
 }
@@ -212,7 +223,12 @@ static const float MIN_SPEED = 10.f;
     //police.skewX = 180.f;
     Police *p = (Police *) police;
     [p flipPolice];
-//    police.rotationalSkewX = 180.f;
+    policeDistracted = true;
+    return YES;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone police:(CCNode *)police {
+    [stone removeFromParent];
     return YES;
 }
 
@@ -247,7 +263,15 @@ static const float MIN_SPEED = 10.f;
     popup.positionType = CCPositionTypeNormalized;
     popup.position = ccp(0.25, 0.25);
     [self addChild:popup];
-    _stone = 5;
+    _stone = 2;
+}
+
+- (void) popupRetryPolice {
+    PolicePopup *popup = (PolicePopup *)[CCBReader load:@"PolicePopup" owner:self];
+    popup.positionType = CCPositionTypeNormalized;
+    popup.position = ccp(0.25, 0.25);
+    [self addChild:popup];
+    _stone = 2;
 }
 
 - (void)retry {
@@ -260,7 +284,12 @@ static const float MIN_SPEED = 10.f;
 #pragma mark - Update
 - (void)update:(CCTime)delta
 {
-    if (_currentItem.launched && _stone <= 0) {
+    if (_currentItem.launched && itemsCount[0] <= 0) {
+        
+        if ([_currentItem parent] == nil) {
+            [self popupRetry];
+            return;
+        }
         
         if (_success) {
             CCLOG(@"success");
