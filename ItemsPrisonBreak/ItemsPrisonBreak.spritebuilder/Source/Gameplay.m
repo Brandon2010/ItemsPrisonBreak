@@ -138,7 +138,7 @@ static const float MIN_SPEED = 10.f;
             // create a item from the ccb-file
             if (currentItem == 0) {
                 _currentItem = (Stone *)[CCBReader load:@"Stone"];
-                _currentItem.scale = 0.5;
+                _currentItem.scale = 0.4;
             } else if (currentItem == 1) {
                 _currentItem = (Coin *)[CCBReader load:@"Coin"];
                 _currentItem.scale = 0.3;
@@ -223,6 +223,7 @@ static const float MIN_SPEED = 10.f;
     //police.skewX = 180.f;
     Police *p = (Police *) police;
     [p flipPolice];
+    [coin removeFromParent];
     policeDistracted = true;
     return YES;
 }

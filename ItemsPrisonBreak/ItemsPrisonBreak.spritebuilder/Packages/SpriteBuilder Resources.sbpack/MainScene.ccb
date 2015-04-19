@@ -230,8 +230,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>100</real>
+							<real>36</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -264,7 +264,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Start</string>
+							<string></string>
 							<false/>
 						</array>
 					</dict>
@@ -276,7 +276,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>ResourceAssets/button-start-spritesheet [www.imagesplitter.net]-1-0.png/button-start-spritesheet11.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -287,7 +287,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string>ResourceAssets/button-start-spritesheet [www.imagesplitter.net]-1-0.png/button-start-spritesheet13.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -330,7 +330,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>ResourceAssets/button-start-spritesheet [www.imagesplitter.net]-1-0.png/button-start-spritesheet13.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -474,6 +474,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -546,8 +548,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
