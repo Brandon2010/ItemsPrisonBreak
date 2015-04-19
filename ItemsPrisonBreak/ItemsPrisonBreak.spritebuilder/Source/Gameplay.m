@@ -275,8 +275,9 @@ static const float MIN_SPEED = 10.f;
     _stone = 2;
 }
 
-- (void)retry {
+- (void) retry {
     // reload this level
+    CCLOG(@"retry");
     CCScene *restartScene = [CCBReader loadAsScene:@"Gameplay"];
     CCTransition *transition = [CCTransition transitionFadeWithDuration:0.8f];
     [[CCDirector sharedDirector] presentScene:restartScene withTransition:transition];
