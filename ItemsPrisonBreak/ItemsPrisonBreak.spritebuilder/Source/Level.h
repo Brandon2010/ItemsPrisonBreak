@@ -14,5 +14,7 @@
 @property (nonatomic, assign) int stoneNumber;
 
 - (void) removeStickDoor;
+- (void) flipCamera;
+- (void) unflipCamera;
 
 @end

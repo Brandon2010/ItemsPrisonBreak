@@ -11,6 +11,14 @@
 
 @implementation LevelSelection
 
+- (void) didLoadFromCCB {
+    // access audio object
+    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+    // play sound effect in a loop
+    //[audio playEffect:@"Prison Break.mp3" loop:YES];
+    [audio playEffect:@"Prison Break.mp3" volume:0.5 pitch:0.5 pan:0.5 loop:YES];
+}
+
 - (void) startOne {
     //[Gameplay setSelectedLevel: @"Levels/Level1"];
     CCScene *gameplayScene = [CCBReader loadAsScene:@"Gameplay"];
@@ -30,7 +38,7 @@
 }
 
 - (void) startFour {
-    [Gameplay setSelectedLevel: @"Levels/Level2"];
+    [Gameplay setSelectedLevel: @"Levels/Level4"];
     CCScene *gameplayScene = [CCBReader loadAsScene:@"Gameplay"];
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
 }

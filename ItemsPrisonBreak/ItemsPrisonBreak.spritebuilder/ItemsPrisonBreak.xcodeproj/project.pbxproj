@@ -10,6 +10,7 @@
 		404441DE1A9AE2AB00942654 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441DD1A9AE2AB00942654 /* Stone.m */; };
 		404441E51A9AE6BA00942654 /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441E41A9AE6BA00942654 /* Gameplay.m */; };
 		4096F0F31AD47C2200378BB7 /* Police.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096F0F21AD47C2200378BB7 /* Police.m */; };
+		40AF8BBE1AE6E6320084B92A /* Prison Break.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */; };
 		40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2757D1AC1EF8000110D41 /* RetryPopup.m */; };
 		40B275891AC2080400110D41 /* Coin.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B275881AC2080400110D41 /* Coin.m */; };
 		40B2758C1AC2241A00110D41 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2758B1AC2241A00110D41 /* Item.m */; };
@@ -17,6 +18,8 @@
 		40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */; };
 		40D4C9851A9D1042000E8AA6 /* RedSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C9841A9D1042000E8AA6 /* RedSwitch.m */; };
 		40D7183D1A9D331D0097862A /* StickDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D7183C1A9D331D0097862A /* StickDoor.m */; };
+		40E33A2D1AEAD81E0014365C /* GreenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E33A2C1AEAD81E0014365C /* GreenSwitch.m */; };
+		40E33A321AEAD9C00014365C /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E33A311AEAD9C00014365C /* Camera.m */; };
 		40F943F11AA582EC00A293C7 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F943F01AA582EC00A293C7 /* Level.m */; };
 		40F943F61AA5885400A293C7 /* WinPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F943F51AA5885400A293C7 /* WinPopup.m */; };
 		40FB92581ADD85600051DCD2 /* LevelSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FB92571ADD85600051DCD2 /* LevelSelection.m */; };
@@ -168,6 +171,7 @@
 		404441E41A9AE6BA00942654 /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gameplay.m; path = Source/Gameplay.m; sourceTree = "<group>"; };
 		4096F0F11AD47C2200378BB7 /* Police.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Police.h; path = Source/Police.h; sourceTree = "<group>"; };
 		4096F0F21AD47C2200378BB7 /* Police.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Police.m; path = Source/Police.m; sourceTree = "<group>"; };
+		40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Prison Break.mp3"; sourceTree = "<group>"; };
 		40B2757C1AC1EF8000110D41 /* RetryPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RetryPopup.h; path = Source/RetryPopup.h; sourceTree = "<group>"; };
 		40B2757D1AC1EF8000110D41 /* RetryPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RetryPopup.m; path = Source/RetryPopup.m; sourceTree = "<group>"; };
 		40B275871AC2080400110D41 /* Coin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Coin.h; path = Source/Coin.h; sourceTree = "<group>"; };
@@ -182,6 +186,10 @@
 		40D4C9841A9D1042000E8AA6 /* RedSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RedSwitch.m; path = Source/RedSwitch.m; sourceTree = "<group>"; };
 		40D7183B1A9D331D0097862A /* StickDoor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StickDoor.h; path = Source/StickDoor.h; sourceTree = "<group>"; };
 		40D7183C1A9D331D0097862A /* StickDoor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StickDoor.m; path = Source/StickDoor.m; sourceTree = "<group>"; };
+		40E33A2B1AEAD81E0014365C /* GreenSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreenSwitch.h; path = Source/GreenSwitch.h; sourceTree = "<group>"; };
+		40E33A2C1AEAD81E0014365C /* GreenSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GreenSwitch.m; path = Source/GreenSwitch.m; sourceTree = "<group>"; };
+		40E33A301AEAD9C00014365C /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = Source/Camera.h; sourceTree = "<group>"; };
+		40E33A311AEAD9C00014365C /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Camera.m; path = Source/Camera.m; sourceTree = "<group>"; };
 		40F943EF1AA582EC00A293C7 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = Source/Level.h; sourceTree = "<group>"; };
 		40F943F01AA582EC00A293C7 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level.m; path = Source/Level.m; sourceTree = "<group>"; };
 		40F943F41AA5885400A293C7 /* WinPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WinPopup.h; path = Source/WinPopup.h; sourceTree = "<group>"; };
@@ -312,6 +320,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40AF8BBC1AE6E5790084B92A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
 		5B12100D197483EE004C1E1D /* res */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,12 +515,16 @@
 				40B275871AC2080400110D41 /* Coin.h */,
 				40B275881AC2080400110D41 /* Coin.m */,
 				40D4C97E1A9D101E000E8AA6 /* YellowSwitch.h */,
+				40E33A2B1AEAD81E0014365C /* GreenSwitch.h */,
+				40E33A2C1AEAD81E0014365C /* GreenSwitch.m */,
 				40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */,
 				40D4C9831A9D1042000E8AA6 /* RedSwitch.h */,
 				40D4C9841A9D1042000E8AA6 /* RedSwitch.m */,
 				404441DD1A9AE2AB00942654 /* Stone.m */,
 				4096F0F11AD47C2200378BB7 /* Police.h */,
 				4096F0F21AD47C2200378BB7 /* Police.m */,
+				40E33A301AEAD9C00014365C /* Camera.h */,
+				40E33A311AEAD9C00014365C /* Camera.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -583,6 +603,7 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40AF8BBC1AE6E5790084B92A /* Audio */,
 				7A40366119DDF8C2007B6E8F /* Platforms */,
 				5B12100D197483EE004C1E1D /* res */,
 				B73789911807667A0076A88C /* Icons */,
@@ -806,6 +827,7 @@
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
+				40AF8BBE1AE6E6320084B92A /* Prison Break.mp3 in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -885,8 +907,10 @@
 				4096F0F31AD47C2200378BB7 /* Police.m in Sources */,
 				40D7183D1A9D331D0097862A /* StickDoor.m in Sources */,
 				40F943F61AA5885400A293C7 /* WinPopup.m in Sources */,
+				40E33A321AEAD9C00014365C /* Camera.m in Sources */,
 				40B275891AC2080400110D41 /* Coin.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				40E33A2D1AEAD81E0014365C /* GreenSwitch.m in Sources */,
 				40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */,
 				40F943F11AA582EC00A293C7 /* Level.m in Sources */,
 				404441E51A9AE6BA00942654 /* Gameplay.m in Sources */,

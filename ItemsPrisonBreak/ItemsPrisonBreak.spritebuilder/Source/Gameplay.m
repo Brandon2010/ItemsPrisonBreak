@@ -15,6 +15,7 @@
 #import "Coin.h"
 #import "Police.h"
 #import "PolicePopup.h"
+#import "Camera.h"
 
 static NSString * const kFirstLevel = @"Levels/Level1";
 static NSString *selectedLevel = @"Levels/Level1";
@@ -58,6 +59,10 @@ static NSString *coin_text = @"Coin";
     
     // Check the police has been distracted
     bool policeDistracted;
+    
+    // Timer to trace the camera
+    NSTimer *timer;
+    BOOL flip;
 }
 
 
@@ -90,11 +95,22 @@ static const float MIN_SPEED = 10.f;
         _switch.visible = FALSE;
         totalItems = 1;
         policeDistracted = true;
+    } else if([selectedLevel isEqual: @"Levels/Level4"] || [selectedLevel isEqual: @"Levels/Level5"]) {
+        _switch.visible = TRUE;
+        _switch.title = stone_text;
+        totalItems = 2;
+        policeDistracted = false;
+        flip = TRUE;
+        NSTimeInterval timeInterval = 5.0;
+        timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(handleTimer:)
+                                               userInfo:nil
+                                               repeats:YES];
     } else {
         _switch.visible = TRUE;
         _switch.title = stone_text;
         totalItems = 2;
         policeDistracted = false;
+        flip = FALSE;
     }
     
 }
@@ -117,6 +133,7 @@ static const float MIN_SPEED = 10.f;
     CCTransition *transition = [CCTransition transitionFadeWithDuration:0.8f];
     [[CCDirector sharedDirector] presentScene:nextScene withTransition:transition];
     CCLOG(@"NextLevel!!!!");
+    [self releaseTimer];
 }
 
 #pragma mark - Touch Handling
@@ -202,6 +219,7 @@ static const float MIN_SPEED = 10.f;
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone yellowswitch :(CCNode *)yellowswitch {
+    _success = TRUE;
     [yellowswitch removeFromParent];
     [stone removeFromParent];
     
@@ -223,6 +241,9 @@ static const float MIN_SPEED = 10.f;
     //police.skewX = 180.f;
     Police *p = (Police *) police;
     [p flipPolice];
+    //[p stopAllActions];
+//    CCSprite *pi = (CCSprite *) police;
+//    pi.paused = YES;
     [coin removeFromParent];
     policeDistracted = true;
     return YES;
@@ -281,6 +302,7 @@ static const float MIN_SPEED = 10.f;
     CCScene *restartScene = [CCBReader loadAsScene:@"Gameplay"];
     CCTransition *transition = [CCTransition transitionFadeWithDuration:0.8f];
     [[CCDirector sharedDirector] presentScene:restartScene withTransition:transition];
+    [self releaseTimer];
 }
 
 #pragma mark - Update
@@ -288,13 +310,12 @@ static const float MIN_SPEED = 10.f;
 {
     if (_currentItem.launched && itemsCount[0] <= 0) {
         
-        if ([_currentItem parent] == nil) {
-            [self popupRetry];
+        if (_success) {
             return;
         }
         
-        if (_success) {
-            CCLOG(@"success");
+        if ([_currentItem parent] == nil) {
+            [self popupRetry];
             return;
         }
         
@@ -347,6 +368,29 @@ static const float MIN_SPEED = 10.f;
 
 +(void) setSelectedLevel: (NSString *) level {
     selectedLevel = level;
+}
+
+- (void)handleTimer:(NSTimer *)theTimer
+{
+//    NSDateFormatter *dateFormator = [[NSDateFormatter alloc] init];
+//    dateFormator.dateFormat = @"yyyy-MM-dd  HH:mm:ss";
+//    NSString *date = [dateFormator stringFromDate:[NSDate date]];
+//    NSLog(@"handleTimer %@", date);
+    if (flip) {
+        flip = FALSE;
+        [level unflipCamera];
+    } else {
+        flip = TRUE;
+        [level flipCamera];
+    }
+}
+
+- (void) releaseTimer {
+    if ([timer isValid])
+    {
+        CCLOG(@"release timer");
+        [timer invalidate];
+    }
 }
 
 @end

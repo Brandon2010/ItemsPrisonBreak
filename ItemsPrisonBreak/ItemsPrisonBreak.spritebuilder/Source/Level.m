@@ -7,19 +7,33 @@
 //
 
 #import "Level.h"
+#import "Camera.h"
 
 @implementation Level {
     CCNode *_stickDoor;
+    CCSprite *_camera;
 }
 
 -(void) didLoadFromCCB {
-    if (_stickDoor == nil) {
-        CCLOG(@"nil in Level");
-    }
 }
 
 - (void) removeStickDoor {
     [_stickDoor removeFromParent];
 }
+
+- (void) flipCamera {
+    if (_camera != nil) {
+        Camera *c = (Camera *) _camera;
+        [c flipCamera];
+    }
+}
+
+- (void) unflipCamera {
+    if (_camera != nil) {
+        Camera *c = (Camera *) _camera;
+        [c unflipCamera];
+    }
+}
+
 
 @end
