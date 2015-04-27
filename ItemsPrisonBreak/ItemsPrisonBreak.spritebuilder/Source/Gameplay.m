@@ -16,6 +16,7 @@
 #import "Police.h"
 #import "PolicePopup.h"
 #import "Camera.h"
+#import "Bomb.h"
 
 static NSString * const kFirstLevel = @"Levels/Level1";
 static NSString *selectedLevel = @"Levels/Level1";
@@ -53,7 +54,7 @@ static NSString *coin_text = @"Coin";
     
     // Two Arrays to control the switching
     NSArray *items;
-    int itemsCount[2];
+    int itemsCount[3];
     int totalItems;
     int currentItem;
     
@@ -63,6 +64,9 @@ static NSString *coin_text = @"Coin";
     // Timer to trace the camera
     NSTimer *timer;
     BOOL flip;
+    
+    // Flag to check is the bomb
+    BOOL isBomb;
 }
 
 
@@ -79,11 +83,12 @@ static const float MIN_SPEED = 10.f;
     _mouseJointNode.physicsBody.collisionMask = @[];
     
     // Initialize the stone left
-    items = [NSArray arrayWithObjects:@"Stone", @"Coin", nil];
+    items = [NSArray arrayWithObjects:@"Stone", @"Coin", @"Bomb", nil];
     //    itemsCount = [NSArray arrayWithObjects:@5, @5, nil];
     for (int i=0; i<2; i++) {
         itemsCount[i] = 5;
     }
+    itemsCount[2] = 2;
     currentItem = 0;
 
     _stone = 2;
@@ -95,6 +100,7 @@ static const float MIN_SPEED = 10.f;
         _switch.visible = FALSE;
         totalItems = 1;
         policeDistracted = true;
+        flip = FALSE;
     } else if([selectedLevel isEqual: @"Levels/Level4"] || [selectedLevel isEqual: @"Levels/Level5"]) {
         _switch.visible = TRUE;
         _switch.title = stone_text;
@@ -105,6 +111,9 @@ static const float MIN_SPEED = 10.f;
         timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(handleTimer:)
                                                userInfo:nil
                                                repeats:YES];
+        if ([selectedLevel isEqual:@"Levels/Level5"]) {
+            totalItems = 3;
+        }
     } else {
         _switch.visible = TRUE;
         _switch.title = stone_text;
@@ -151,6 +160,7 @@ static const float MIN_SPEED = 10.f;
         // setup a spring joint between the mouseJointNode and the escaperHand
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_escaperHand.physicsBody anchorA:ccp(0, 0) anchorB:ccp(9.8, 9.3) restLength:0.f stiffness:3000.f damping:60.f];
         
+        isBomb = FALSE;
         if (itemsCount[currentItem] > 0) {
             // create a item from the ccb-file
             if (currentItem == 0) {
@@ -159,6 +169,10 @@ static const float MIN_SPEED = 10.f;
             } else if (currentItem == 1) {
                 _currentItem = (Coin *)[CCBReader load:@"Coin"];
                 _currentItem.scale = 0.3;
+            } else if (currentItem == 2) {
+                _currentItem = (Bomb *) [CCBReader load:@"Bomb"];
+                _currentItem.scale = 0.08;
+                isBomb = TRUE;
             }
             // initially position it on the scoop.
             CGPoint itemPosition = [_escaperHand convertToWorldSpace:ccp(20.5, 35.5)];
@@ -211,7 +225,7 @@ static const float MIN_SPEED = 10.f;
         [level removeStickDoor];
         [stone removeFromParent];
     } else {
-        CCLOG(@"weird");
+        [self alarm];
         [self popupRetryPolice];
     }
     
@@ -219,6 +233,16 @@ static const float MIN_SPEED = 10.f;
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone yellowswitch :(CCNode *)yellowswitch {
+    if (!policeDistracted) {
+        [self popupRetryPolice];
+        [self alarm];
+        return YES;
+    } else if (flip) {
+        [self popupRetryPolice];
+        [self alarm];
+        return YES;
+    }
+    
     _success = TRUE;
     [yellowswitch removeFromParent];
     [stone removeFromParent];
@@ -253,6 +277,23 @@ static const float MIN_SPEED = 10.f;
     [stone removeFromParent];
     return YES;
 }
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair bomb:(CCNode *)bomb explosionwall:(CCNode *)explosionwall {
+    CCParticleSystem *explosion = (CCParticleSystem *)[CCBReader load:@"BombExplosion"];
+    // make the particle effect clean itself up, once it is completed
+    explosion.autoRemoveOnFinish = TRUE;
+    // place the particle effect on the seals position
+    explosion.position = bomb.position;
+    [bomb.parent addChild:explosion];
+    [bomb removeFromParent];
+    [explosionwall removeFromParent];
+    return YES;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone greenswitch:(CCNode *)greenswitch {
+    return YES;
+}
+
 
 - (void)releaseHead {
     if (_mouseJoint != nil)
@@ -308,6 +349,18 @@ static const float MIN_SPEED = 10.f;
 #pragma mark - Update
 - (void)update:(CCTime)delta
 {
+    if (_currentItem.launched && isBomb == TRUE) {
+        if (ccpLength(_currentItem.physicsBody.velocity) < MIN_SPEED){
+            CCParticleSystem *explosion = (CCParticleSystem *)[CCBReader load:@"BombExplosion"];
+            // make the particle effect clean itself up, once it is completed
+            explosion.autoRemoveOnFinish = TRUE;
+            // place the particle effect on the seals position
+            explosion.position = _currentItem.position;
+            [_currentItem.parent addChild:explosion];
+            [_currentItem removeFromParent];
+        }
+    }
+    
     if (_currentItem.launched && itemsCount[0] <= 0) {
         
         if (_success) {
@@ -391,6 +444,11 @@ static const float MIN_SPEED = 10.f;
         CCLOG(@"release timer");
         [timer invalidate];
     }
+}
+
+- (void) alarm {
+    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+    [audio playEffect:@"alarm.mp3" volume:0.5 pitch:1 pan:0.5 loop:NO];
 }
 
 @end

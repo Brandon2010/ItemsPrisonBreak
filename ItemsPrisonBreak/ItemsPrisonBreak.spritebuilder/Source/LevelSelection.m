@@ -44,7 +44,7 @@
 }
 
 - (void) startFive {
-    [Gameplay setSelectedLevel: @"Levels/Level2"];
+    [Gameplay setSelectedLevel: @"Levels/Level5"];
     CCScene *gameplayScene = [CCBReader loadAsScene:@"Gameplay"];
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
 }

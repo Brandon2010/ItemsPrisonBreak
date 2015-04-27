@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		403650C31AEC560800D9912C /* Bomb.m in Sources */ = {isa = PBXBuildFile; fileRef = 403650C21AEC560800D9912C /* Bomb.m */; };
+		403650C81AEC9DFB00D9912C /* ExplosionWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 403650C71AEC9DFB00D9912C /* ExplosionWall.m */; };
+		403650CA1AECA2D300D9912C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 403650C91AECA2D300D9912C /* alarm.mp3 */; };
 		404441DE1A9AE2AB00942654 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441DD1A9AE2AB00942654 /* Stone.m */; };
 		404441E51A9AE6BA00942654 /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441E41A9AE6BA00942654 /* Gameplay.m */; };
 		4096F0F31AD47C2200378BB7 /* Police.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096F0F21AD47C2200378BB7 /* Police.m */; };
@@ -165,6 +168,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		403650C11AEC560800D9912C /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bomb.h; path = Source/Bomb.h; sourceTree = "<group>"; };
+		403650C21AEC560800D9912C /* Bomb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bomb.m; path = Source/Bomb.m; sourceTree = "<group>"; };
+		403650C61AEC9DFB00D9912C /* ExplosionWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExplosionWall.h; path = Source/ExplosionWall.h; sourceTree = "<group>"; };
+		403650C71AEC9DFB00D9912C /* ExplosionWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExplosionWall.m; path = Source/ExplosionWall.m; sourceTree = "<group>"; };
+		403650C91AECA2D300D9912C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		404441DC1A9AE2AB00942654 /* Stone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stone.h; path = Source/Stone.h; sourceTree = "<group>"; };
 		404441DD1A9AE2AB00942654 /* Stone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stone.m; path = Source/Stone.m; sourceTree = "<group>"; };
 		404441E31A9AE6BA00942654 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gameplay.h; path = Source/Gameplay.h; sourceTree = "<group>"; };
@@ -323,6 +331,7 @@
 		40AF8BBC1AE6E5790084B92A /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				403650C91AECA2D300D9912C /* alarm.mp3 */,
 				40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */,
 			);
 			name = Audio;
@@ -505,9 +514,13 @@
 				B7378992180767190076A88C /* MainScene.h */,
 				40FB92561ADD85600051DCD2 /* LevelSelection.h */,
 				40FB92571ADD85600051DCD2 /* LevelSelection.m */,
+				403650C61AEC9DFB00D9912C /* ExplosionWall.h */,
+				403650C71AEC9DFB00D9912C /* ExplosionWall.m */,
 				B7378993180767190076A88C /* MainScene.m */,
 				404441E31A9AE6BA00942654 /* Gameplay.h */,
 				404441E41A9AE6BA00942654 /* Gameplay.m */,
+				403650C11AEC560800D9912C /* Bomb.h */,
+				403650C21AEC560800D9912C /* Bomb.m */,
 				40B2758A1AC2241A00110D41 /* Item.h */,
 				40B2758B1AC2241A00110D41 /* Item.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
@@ -824,6 +837,7 @@
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
+				403650CA1AECA2D300D9912C /* alarm.mp3 in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
@@ -911,6 +925,7 @@
 				40B275891AC2080400110D41 /* Coin.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				40E33A2D1AEAD81E0014365C /* GreenSwitch.m in Sources */,
+				403650C31AEC560800D9912C /* Bomb.m in Sources */,
 				40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */,
 				40F943F11AA582EC00A293C7 /* Level.m in Sources */,
 				404441E51A9AE6BA00942654 /* Gameplay.m in Sources */,
@@ -921,6 +936,7 @@
 				40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				404441DE1A9AE2AB00942654 /* Stone.m in Sources */,
+				403650C81AEC9DFB00D9912C /* ExplosionWall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
