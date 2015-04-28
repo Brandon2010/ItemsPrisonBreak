@@ -8,6 +8,7 @@
 
 #import "LevelSelection.h"
 #import "Gameplay.h"
+//#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @implementation LevelSelection {
     CCButton *_button2;
@@ -27,11 +28,11 @@ static NSString * const levelPass = @"levelPass";
     [audio playEffect:@"Prison Break.mp3" volume:0.5 pitch:1 pan:0.5 loop:YES];
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:levelPass]==nil){
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:levelPass];
+        [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:levelPass];
         [[NSUserDefaults standardUserDefaults] synchronize];
         level = 1;
     }else{
-        [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:levelPass];
+        [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:levelPass];
         level = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
     }
     
@@ -64,6 +65,7 @@ static NSString * const levelPass = @"levelPass";
 
 - (void) startOne {
     //[Gameplay setSelectedLevel: @"Levels/Level1"];
+    [Gameplay setSelectedLevel: @"Levels/Level1"];
     CCScene *gameplayScene = [CCBReader loadAsScene:@"Gameplay"];
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
 }
@@ -100,5 +102,24 @@ static NSString * const levelPass = @"levelPass";
     }
 }
 
+
+//- (void)applicationDidBecomeActive:(UIApplication *)application {
+//    [FBSDKAppEvents activateApp];
+//}
+//
+//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                    didFinishLaunchingWithOptions:launchOptions];
+//}
+//
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation {
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                                          openURL:url
+//                                                sourceApplication:sourceApplication
+//                                                       annotation:annotation];
+//}
 
 @end

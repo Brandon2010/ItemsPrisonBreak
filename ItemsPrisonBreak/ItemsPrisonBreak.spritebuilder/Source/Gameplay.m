@@ -119,9 +119,9 @@ static const float MIN_SPEED = 10.f;
         flip = FALSE;
         current_level = 1;
         int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
-        if (dataLevel == current_level) {
-            [self addInstruction:1];
-        }
+//        if (dataLevel == current_level) {
+        [self addInstruction:1];
+//        }
     } else if([selectedLevel isEqual: @"Levels/Level4"] || [selectedLevel isEqual: @"Levels/Level5"]) {
         _switch.visible = TRUE;
         _switch.title = stone_text;
@@ -139,9 +139,9 @@ static const float MIN_SPEED = 10.f;
             current_level = 4;
             totalItems = 2;
             int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
-            if (dataLevel == current_level) {
-                [self addInstruction:3];
-            }
+//            if (dataLevel == current_level) {
+            [self addInstruction:3];
+//            }
         }
     } else {
         _switch.visible = TRUE;
@@ -153,9 +153,9 @@ static const float MIN_SPEED = 10.f;
         if ([selectedLevel isEqual:@"Levels/Level2"]) {
             current_level = 2;
             int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
-            if (dataLevel == current_level) {
-                [self addInstruction:2];
-            }
+//            if (dataLevel == current_level) {
+            [self addInstruction:2];
+//            }
         }
     }
     
