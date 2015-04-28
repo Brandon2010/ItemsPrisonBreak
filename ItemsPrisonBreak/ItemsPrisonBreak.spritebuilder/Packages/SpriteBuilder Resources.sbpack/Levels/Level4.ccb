@@ -839,8 +839,8 @@
 							<real>0.0</real>
 						</array>
 						<array>
-							<real>0.0</real>
-							<real>79</real>
+							<real>41.64642333984375</real>
+							<real>39.001998901367188</real>
 						</array>
 						<array>
 							<real>79</real>
@@ -863,11 +863,21 @@
 								<real>79</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>79</real>
+								<real>41.64642333984375</real>
+								<real>39.001998901367188</real>
+							</array>
+						</array>
+						<array>
+							<array>
+								<real>41.64642333984375</real>
+								<real>39.001998901367188</real>
 							</array>
 							<array>
 								<real>0.0</real>
+								<real>0.0</real>
+							</array>
+							<array>
+								<real>79</real>
 								<real>0.0</real>
 							</array>
 						</array>
@@ -965,6 +975,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2247,6 +2259,16 @@
 				<integer>0</integer>
 				<key>value</key>
 				<string>5</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>nextLevelName</string>
+				<key>optimized</key>
+				<false/>
+				<key>type</key>
+				<integer>3</integer>
+				<key>value</key>
+				<string>Levels/Level5</string>
 			</dict>
 		</array>
 		<key>displayName</key>

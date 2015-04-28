@@ -1741,7 +1741,7 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>nextLevel</string>
+				<string>nextLevelName</string>
 				<key>optimized</key>
 				<false/>
 				<key>type</key>

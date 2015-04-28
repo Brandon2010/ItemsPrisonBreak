@@ -159,7 +159,7 @@
 				<key>displayName</key>
 				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_button1</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -204,8 +204,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.40000000596046448</real>
-							<real>0.5</real>
+							<real>0.48078161478042603</real>
+							<real>0.41144058108329773</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -485,7 +485,7 @@
 				<key>displayName</key>
 				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_button2</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -530,8 +530,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.40000000596046448</real>
-							<real>0.5</real>
+							<real>0.48100000619888306</real>
+							<real>0.41100001335144043</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -600,7 +600,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ResourceAssets/Level-3-Star@4x (1).png</string>
+							<string>ResourceAssets/Level-Locked.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -811,7 +811,7 @@
 				<key>displayName</key>
 				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_button3</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -856,8 +856,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.40000000596046448</real>
-							<real>0.5</real>
+							<real>0.48100000619888306</real>
+							<real>0.41100001335144043</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -926,7 +926,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ResourceAssets/Level-3-Star@4x (1).png</string>
+							<string>ResourceAssets/Level-Locked.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1137,7 +1137,7 @@
 				<key>displayName</key>
 				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_button4</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1182,8 +1182,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.40000000596046448</real>
-							<real>0.5</real>
+							<real>0.48100000619888306</real>
+							<real>0.41100001335144043</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1252,7 +1252,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ResourceAssets/Level-3-Star@4x (1).png</string>
+							<string>ResourceAssets/Level-Locked.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1463,7 +1463,7 @@
 				<key>displayName</key>
 				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_button5</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1508,8 +1508,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.40000000596046448</real>
-							<real>0.5</real>
+							<real>0.48100000619888306</real>
+							<real>0.41100001335144043</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1578,7 +1578,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ResourceAssets/Level-3-Star@4x (1).png</string>
+							<string>ResourceAssets/Level-Locked.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1776,8 +1776,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

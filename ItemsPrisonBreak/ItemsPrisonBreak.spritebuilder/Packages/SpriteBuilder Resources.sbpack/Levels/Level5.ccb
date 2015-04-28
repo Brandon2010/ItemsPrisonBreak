@@ -2270,6 +2270,29 @@
 		</array>
 		<key>customClass</key>
 		<string>Level</string>
+		<key>customProperties</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>stoneNumber</string>
+				<key>optimized</key>
+				<false/>
+				<key>type</key>
+				<integer>0</integer>
+				<key>value</key>
+				<string>5</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>nextLevelName</string>
+				<key>optimized</key>
+				<false/>
+				<key>type</key>
+				<integer>3</integer>
+				<key>value</key>
+				<string>Levels/Level1</string>
+			</dict>
+		</array>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>

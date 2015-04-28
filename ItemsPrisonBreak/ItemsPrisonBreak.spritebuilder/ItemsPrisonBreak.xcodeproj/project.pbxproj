@@ -10,6 +10,7 @@
 		403650C31AEC560800D9912C /* Bomb.m in Sources */ = {isa = PBXBuildFile; fileRef = 403650C21AEC560800D9912C /* Bomb.m */; };
 		403650C81AEC9DFB00D9912C /* ExplosionWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 403650C71AEC9DFB00D9912C /* ExplosionWall.m */; };
 		403650CA1AECA2D300D9912C /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 403650C91AECA2D300D9912C /* alarm.mp3 */; };
+		403CF9141AEED9B900A4357D /* CameraPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CF9131AEED9B900A4357D /* CameraPopup.m */; };
 		404441DE1A9AE2AB00942654 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441DD1A9AE2AB00942654 /* Stone.m */; };
 		404441E51A9AE6BA00942654 /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441E41A9AE6BA00942654 /* Gameplay.m */; };
 		4096F0F31AD47C2200378BB7 /* Police.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096F0F21AD47C2200378BB7 /* Police.m */; };
@@ -173,6 +174,8 @@
 		403650C61AEC9DFB00D9912C /* ExplosionWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExplosionWall.h; path = Source/ExplosionWall.h; sourceTree = "<group>"; };
 		403650C71AEC9DFB00D9912C /* ExplosionWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExplosionWall.m; path = Source/ExplosionWall.m; sourceTree = "<group>"; };
 		403650C91AECA2D300D9912C /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
+		403CF9121AEED9B900A4357D /* CameraPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraPopup.h; path = Source/CameraPopup.h; sourceTree = "<group>"; };
+		403CF9131AEED9B900A4357D /* CameraPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraPopup.m; path = Source/CameraPopup.m; sourceTree = "<group>"; };
 		404441DC1A9AE2AB00942654 /* Stone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stone.h; path = Source/Stone.h; sourceTree = "<group>"; };
 		404441DD1A9AE2AB00942654 /* Stone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stone.m; path = Source/Stone.m; sourceTree = "<group>"; };
 		404441E31A9AE6BA00942654 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gameplay.h; path = Source/Gameplay.h; sourceTree = "<group>"; };
@@ -519,6 +522,8 @@
 				B7378993180767190076A88C /* MainScene.m */,
 				404441E31A9AE6BA00942654 /* Gameplay.h */,
 				404441E41A9AE6BA00942654 /* Gameplay.m */,
+				403CF9121AEED9B900A4357D /* CameraPopup.h */,
+				403CF9131AEED9B900A4357D /* CameraPopup.m */,
 				403650C11AEC560800D9912C /* Bomb.h */,
 				403650C21AEC560800D9912C /* Bomb.m */,
 				40B2758A1AC2241A00110D41 /* Item.h */,
@@ -921,6 +926,7 @@
 				4096F0F31AD47C2200378BB7 /* Police.m in Sources */,
 				40D7183D1A9D331D0097862A /* StickDoor.m in Sources */,
 				40F943F61AA5885400A293C7 /* WinPopup.m in Sources */,
+				403CF9141AEED9B900A4357D /* CameraPopup.m in Sources */,
 				40E33A321AEAD9C00014365C /* Camera.m in Sources */,
 				40B275891AC2080400110D41 /* Coin.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,

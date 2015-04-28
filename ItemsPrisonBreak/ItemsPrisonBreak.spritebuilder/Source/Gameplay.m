@@ -17,11 +17,13 @@
 #import "PolicePopup.h"
 #import "Camera.h"
 #import "Bomb.h"
+#import "CameraPopup.h"
 
 static NSString * const kFirstLevel = @"Levels/Level1";
 static NSString *selectedLevel = @"Levels/Level1";
 static NSString *stone_text = @"Stone";
 static NSString *coin_text = @"Coin";
+static NSString * const levelPass = @"levelPass";
 
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
@@ -67,6 +69,10 @@ static NSString *coin_text = @"Coin";
     
     // Flag to check is the bomb
     BOOL isBomb;
+    
+    // Flag to check progress of pass
+    int pass;
+    int current_level;
 }
 
 
@@ -74,6 +80,8 @@ static const float MIN_SPEED = 10.f;
 
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB {
+//    self.paused = YES;
+    
     _physicsNode.collisionDelegate = self;
     //_physicsNode.debugDraw = TRUE;
     self.userInteractionEnabled = TRUE;
@@ -94,6 +102,7 @@ static const float MIN_SPEED = 10.f;
     _stone = 2;
     _success = FALSE;
     _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[0]];
+    pass = 1;
     
     // Hide switch button in first level
     if ([selectedLevel isEqual: @"Levels/Level1"]) {
@@ -101,18 +110,22 @@ static const float MIN_SPEED = 10.f;
         totalItems = 1;
         policeDistracted = true;
         flip = FALSE;
+        current_level = 1;
     } else if([selectedLevel isEqual: @"Levels/Level4"] || [selectedLevel isEqual: @"Levels/Level5"]) {
         _switch.visible = TRUE;
         _switch.title = stone_text;
         totalItems = 2;
         policeDistracted = false;
         flip = TRUE;
+        pass = 0;
         NSTimeInterval timeInterval = 5.0;
         timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(handleTimer:)
                                                userInfo:nil
                                                repeats:YES];
+        current_level = 4;
         if ([selectedLevel isEqual:@"Levels/Level5"]) {
             totalItems = 3;
+            current_level = 5;
         }
     } else {
         _switch.visible = TRUE;
@@ -120,6 +133,10 @@ static const float MIN_SPEED = 10.f;
         totalItems = 2;
         policeDistracted = false;
         flip = FALSE;
+        current_level = 2;
+        if ([selectedLevel isEqual:@"Levels/Level3"]) {
+            current_level = 3;
+        }
     }
     
 }
@@ -238,12 +255,21 @@ static const float MIN_SPEED = 10.f;
         [self alarm];
         return YES;
     } else if (flip) {
-        [self popupRetryPolice];
+        [self popupRetryCamera];
         [self alarm];
         return YES;
     }
     
+    if (pass < 1) {
+        return YES;
+    }
+    
     _success = TRUE;
+    int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
+    if (dataLevel == current_level && dataLevel != 5) {
+        [[NSUserDefaults standardUserDefaults] setInteger:dataLevel+1 forKey:levelPass];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     [yellowswitch removeFromParent];
     [stone removeFromParent];
     
@@ -251,6 +277,7 @@ static const float MIN_SPEED = 10.f;
     popup.positionType = CCPositionTypeNormalized;
     popup.position = ccp(0.25, 0.25);
     [self addChild:popup];
+    self.paused = YES;
 
     return YES;
 }
@@ -291,6 +318,9 @@ static const float MIN_SPEED = 10.f;
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone greenswitch:(CCNode *)greenswitch {
+    pass = 1;
+    [stone removeFromParent];
+    [greenswitch removeFromParent];
     return YES;
 }
 
@@ -326,6 +356,7 @@ static const float MIN_SPEED = 10.f;
     popup.positionType = CCPositionTypeNormalized;
     popup.position = ccp(0.25, 0.25);
     [self addChild:popup];
+    self.paused = YES;
     _stone = 2;
 }
 
@@ -334,6 +365,16 @@ static const float MIN_SPEED = 10.f;
     popup.positionType = CCPositionTypeNormalized;
     popup.position = ccp(0.25, 0.25);
     [self addChild:popup];
+    self.paused = YES;
+    _stone = 2;
+}
+
+- (void) popupRetryCamera {
+    CameraPopup *popup = (CameraPopup *)[CCBReader load:@"CameraPopup" owner:self];
+    popup.positionType = CCPositionTypeNormalized;
+    popup.position = ccp(0.25, 0.25);
+    [self addChild:popup];
+    self.paused = YES;
     _stone = 2;
 }
 
