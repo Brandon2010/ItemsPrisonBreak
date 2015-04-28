@@ -18,6 +18,7 @@
 #import "Camera.h"
 #import "Bomb.h"
 #import "CameraPopup.h"
+#import "Instruction.h"
 
 static NSString * const kFirstLevel = @"Levels/Level1";
 static NSString *selectedLevel = @"Levels/Level1";
@@ -32,6 +33,8 @@ static NSString * const levelPass = @"levelPass";
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
     CCPhysicsJoint *_mouseJoint;
+    
+    CCButton *_retryButton;
     
     CCPhysicsJoint *_stoneHandJoint;
     //CCNode *_stickdoor;
@@ -73,6 +76,9 @@ static NSString * const levelPass = @"levelPass";
     // Flag to check progress of pass
     int pass;
     int current_level;
+    
+    // Instruction Layer
+    Instruction *instruction;
 }
 
 
@@ -111,10 +117,10 @@ static const float MIN_SPEED = 10.f;
         policeDistracted = true;
         flip = FALSE;
         current_level = 1;
+        [self addInstruction:1];
     } else if([selectedLevel isEqual: @"Levels/Level4"] || [selectedLevel isEqual: @"Levels/Level5"]) {
         _switch.visible = TRUE;
         _switch.title = stone_text;
-        totalItems = 2;
         policeDistracted = false;
         flip = TRUE;
         pass = 0;
@@ -122,10 +128,13 @@ static const float MIN_SPEED = 10.f;
         timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(handleTimer:)
                                                userInfo:nil
                                                repeats:YES];
-        current_level = 4;
-        if ([selectedLevel isEqual:@"Levels/Level5"]) {
-            totalItems = 3;
-            current_level = 5;
+        totalItems = 3;
+        current_level = 5;
+        
+        if ([selectedLevel isEqual:@"Levels/Level4"]) {
+            current_level = 4;
+            totalItems = 2;
+            [self addInstruction:3];
         }
     } else {
         _switch.visible = TRUE;
@@ -133,9 +142,10 @@ static const float MIN_SPEED = 10.f;
         totalItems = 2;
         policeDistracted = false;
         flip = FALSE;
-        current_level = 2;
-        if ([selectedLevel isEqual:@"Levels/Level3"]) {
-            current_level = 3;
+        current_level = 3;
+        if ([selectedLevel isEqual:@"Levels/Level2"]) {
+            current_level = 2;
+            [self addInstruction:2];
         }
     }
     
@@ -490,6 +500,33 @@ static const float MIN_SPEED = 10.f;
 - (void) alarm {
     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
     [audio playEffect:@"alarm.mp3" volume:0.5 pitch:1 pan:0.5 loop:NO];
+}
+
+- (void) begin {
+    self.paused = NO;
+    [self removeInstruction];
+    _retryButton.enabled = TRUE;
+    self.userInteractionEnabled = TRUE;
+}
+
+- (void) addInstruction: (int) index {
+    self.paused = YES;
+    self.userInteractionEnabled = FALSE;
+    _retryButton.enabled = FALSE;
+    if (index == 1) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction1" owner:self];
+    } else if (index == 2) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction2" owner:self];
+    } else {
+        instruction = (Instruction *)[CCBReader load:@"Instruction3" owner:self];
+    }
+    instruction.positionType = CCPositionTypeNormalized;
+    instruction.position = ccp(0, 0);
+    [self addChild:instruction];
+}
+
+- (void) removeInstruction {
+    [self removeChild:instruction];
 }
 
 @end

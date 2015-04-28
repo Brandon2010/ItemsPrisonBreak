@@ -1731,7 +1731,7 @@
 								<key>displayName</key>
 								<string>CCButton</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>_retryButton</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -1881,7 +1881,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>ccbResources/ccbButtonNormal.png</string>
+											<string>ResourceAssets/Reset.png</string>
 										</array>
 									</dict>
 									<dict>

@@ -21,6 +21,8 @@
 		40B95B1A1AD7594600F34BC8 /* PolicePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B95B191AD7594600F34BC8 /* PolicePopup.m */; };
 		40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */; };
 		40D4C9851A9D1042000E8AA6 /* RedSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C9841A9D1042000E8AA6 /* RedSwitch.m */; };
+		40D53B121AEF3D040011A2CC /* Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D53B111AEF3D040011A2CC /* Splash.m */; };
+		40D53B171AEF4A290011A2CC /* Instruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D53B161AEF4A290011A2CC /* Instruction.m */; };
 		40D7183D1A9D331D0097862A /* StickDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D7183C1A9D331D0097862A /* StickDoor.m */; };
 		40E33A2D1AEAD81E0014365C /* GreenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E33A2C1AEAD81E0014365C /* GreenSwitch.m */; };
 		40E33A321AEAD9C00014365C /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E33A311AEAD9C00014365C /* Camera.m */; };
@@ -195,6 +197,10 @@
 		40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YellowSwitch.m; path = Source/YellowSwitch.m; sourceTree = "<group>"; };
 		40D4C9831A9D1042000E8AA6 /* RedSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RedSwitch.h; path = Source/RedSwitch.h; sourceTree = "<group>"; };
 		40D4C9841A9D1042000E8AA6 /* RedSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RedSwitch.m; path = Source/RedSwitch.m; sourceTree = "<group>"; };
+		40D53B101AEF3D040011A2CC /* Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Splash.h; path = Source/Splash.h; sourceTree = "<group>"; };
+		40D53B111AEF3D040011A2CC /* Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Splash.m; path = Source/Splash.m; sourceTree = "<group>"; };
+		40D53B151AEF4A290011A2CC /* Instruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Instruction.h; path = Source/Instruction.h; sourceTree = "<group>"; };
+		40D53B161AEF4A290011A2CC /* Instruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Instruction.m; path = Source/Instruction.m; sourceTree = "<group>"; };
 		40D7183B1A9D331D0097862A /* StickDoor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StickDoor.h; path = Source/StickDoor.h; sourceTree = "<group>"; };
 		40D7183C1A9D331D0097862A /* StickDoor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StickDoor.m; path = Source/StickDoor.m; sourceTree = "<group>"; };
 		40E33A2B1AEAD81E0014365C /* GreenSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreenSwitch.h; path = Source/GreenSwitch.h; sourceTree = "<group>"; };
@@ -509,7 +515,11 @@
 				40F943F41AA5885400A293C7 /* WinPopup.h */,
 				40B2757C1AC1EF8000110D41 /* RetryPopup.h */,
 				40B95B181AD7594600F34BC8 /* PolicePopup.h */,
+				40D53B151AEF4A290011A2CC /* Instruction.h */,
+				40D53B161AEF4A290011A2CC /* Instruction.m */,
 				40B95B191AD7594600F34BC8 /* PolicePopup.m */,
+				40D53B101AEF3D040011A2CC /* Splash.h */,
+				40D53B111AEF3D040011A2CC /* Splash.m */,
 				40B2757D1AC1EF8000110D41 /* RetryPopup.m */,
 				40F943F51AA5885400A293C7 /* WinPopup.m */,
 				40F943F01AA582EC00A293C7 /* Level.m */,
@@ -716,6 +726,7 @@
 						CreatedOnToolsVersion = 6.0.1;
 					};
 					B77F1B2D17B978D7009739AE = {
+						DevelopmentTeam = 6N5C46ZHL7;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -942,7 +953,9 @@
 				40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				404441DE1A9AE2AB00942654 /* Stone.m in Sources */,
+				40D53B121AEF3D040011A2CC /* Splash.m in Sources */,
 				403650C81AEC9DFB00D9912C /* ExplosionWall.m in Sources */,
+				40D53B171AEF4A290011A2CC /* Instruction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

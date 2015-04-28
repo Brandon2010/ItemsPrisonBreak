@@ -31,6 +31,7 @@ static NSString * const levelPass = @"levelPass";
         [[NSUserDefaults standardUserDefaults] synchronize];
         level = 1;
     }else{
+        [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:levelPass];
         level = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
     }
     
