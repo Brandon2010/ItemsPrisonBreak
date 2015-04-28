@@ -24,14 +24,14 @@ static NSString * const levelPass = @"levelPass";
     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
     // play sound effect in a loop
     //[audio playEffect:@"Prison Break.mp3" loop:YES];
-    [audio playEffect:@"Prison Break.mp3" volume:0.5 pitch:0.5 pan:0.5 loop:YES];
+    [audio playEffect:@"Prison Break.mp3" volume:0.5 pitch:1 pan:0.5 loop:YES];
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:levelPass]==nil){
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:levelPass];
         [[NSUserDefaults standardUserDefaults] synchronize];
         level = 1;
     }else{
-        [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:levelPass];
+        [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:levelPass];
         level = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
     }
     

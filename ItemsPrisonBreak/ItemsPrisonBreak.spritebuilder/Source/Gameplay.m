@@ -35,6 +35,7 @@ static NSString * const levelPass = @"levelPass";
     CCPhysicsJoint *_mouseJoint;
     
     CCButton *_retryButton;
+    CCButton *_menuButton;
     
     CCPhysicsJoint *_stoneHandJoint;
     //CCNode *_stickdoor;
@@ -117,7 +118,10 @@ static const float MIN_SPEED = 10.f;
         policeDistracted = true;
         flip = FALSE;
         current_level = 1;
-        [self addInstruction:1];
+        int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
+        if (dataLevel == current_level) {
+            [self addInstruction:1];
+        }
     } else if([selectedLevel isEqual: @"Levels/Level4"] || [selectedLevel isEqual: @"Levels/Level5"]) {
         _switch.visible = TRUE;
         _switch.title = stone_text;
@@ -134,7 +138,10 @@ static const float MIN_SPEED = 10.f;
         if ([selectedLevel isEqual:@"Levels/Level4"]) {
             current_level = 4;
             totalItems = 2;
-            [self addInstruction:3];
+            int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
+            if (dataLevel == current_level) {
+                [self addInstruction:3];
+            }
         }
     } else {
         _switch.visible = TRUE;
@@ -145,7 +152,10 @@ static const float MIN_SPEED = 10.f;
         current_level = 3;
         if ([selectedLevel isEqual:@"Levels/Level2"]) {
             current_level = 2;
-            [self addInstruction:2];
+            int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
+            if (dataLevel == current_level) {
+                [self addInstruction:2];
+            }
         }
     }
     
@@ -283,7 +293,14 @@ static const float MIN_SPEED = 10.f;
     [yellowswitch removeFromParent];
     [stone removeFromParent];
     
-    WinPopup *popup = (WinPopup *)[CCBReader load:@"WinPopup" owner:self];
+    WinPopup *popup;
+    if (current_level == 1) {
+        popup = (WinPopup *)[CCBReader load:@"WinPopupCoin" owner:self];
+    } else if (current_level == 4) {
+        popup = (WinPopup *)[CCBReader load:@"WinPopupBomb" owner:self];
+    } else {
+        popup = (WinPopup *)[CCBReader load:@"WinPopup" owner:self];
+    }
     popup.positionType = CCPositionTypeNormalized;
     popup.position = ccp(0.25, 0.25);
     [self addChild:popup];
@@ -298,8 +315,6 @@ static const float MIN_SPEED = 10.f;
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coin:(CCNode *)coin police:(CCNode *)police {
-//    police.rotationalSkewX = 180;
-    //police.skewX = 180.f;
     Police *p = (Police *) police;
     [p flipPolice];
     //[p stopAllActions];
@@ -506,6 +521,7 @@ static const float MIN_SPEED = 10.f;
     self.paused = NO;
     [self removeInstruction];
     _retryButton.enabled = TRUE;
+    _menuButton.enabled = TRUE;
     self.userInteractionEnabled = TRUE;
 }
 
@@ -513,6 +529,7 @@ static const float MIN_SPEED = 10.f;
     self.paused = YES;
     self.userInteractionEnabled = FALSE;
     _retryButton.enabled = FALSE;
+    _menuButton.enabled = FALSE;
     if (index == 1) {
         instruction = (Instruction *)[CCBReader load:@"Instruction1" owner:self];
     } else if (index == 2) {
@@ -527,6 +544,11 @@ static const float MIN_SPEED = 10.f;
 
 - (void) removeInstruction {
     [self removeChild:instruction];
+}
+
+- (void) menu {
+    CCScene *selectionScene = [CCBReader loadAsScene:@"LevelSelection"];
+    [[CCDirector sharedDirector] replaceScene:selectionScene];
 }
 
 @end
