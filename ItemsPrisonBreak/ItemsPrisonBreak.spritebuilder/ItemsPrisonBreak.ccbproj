@@ -81,10 +81,7 @@
 		<key>ResourceAssets</key>
 		<dict/>
 		<key>ResourceAssets/T9.png</key>
-		<dict>
-			<key>isDirty</key>
-			<true/>
-		</dict>
+		<dict/>
 		<key>ResourceAssets/background.png</key>
 		<dict/>
 		<key>Sprites</key>

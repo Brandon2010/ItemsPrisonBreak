@@ -13,6 +13,10 @@
 		403CF9141AEED9B900A4357D /* CameraPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CF9131AEED9B900A4357D /* CameraPopup.m */; };
 		404441DE1A9AE2AB00942654 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441DD1A9AE2AB00942654 /* Stone.m */; };
 		404441E51A9AE6BA00942654 /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 404441E41A9AE6BA00942654 /* Gameplay.m */; };
+		409084491AF4B5A900523838 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409084451AF4B5A900523838 /* Bolts.framework */; };
+		4090844A1AF4B5A900523838 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409084461AF4B5A900523838 /* FBSDKCoreKit.framework */; };
+		4090844B1AF4B5A900523838 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409084471AF4B5A900523838 /* FBSDKLoginKit.framework */; };
+		4090844C1AF4B5A900523838 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409084481AF4B5A900523838 /* FBSDKShareKit.framework */; };
 		4096F0F31AD47C2200378BB7 /* Police.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096F0F21AD47C2200378BB7 /* Police.m */; };
 		40AF8BBE1AE6E6320084B92A /* Prison Break.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */; };
 		40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2757D1AC1EF8000110D41 /* RetryPopup.m */; };
@@ -182,6 +186,10 @@
 		404441DD1A9AE2AB00942654 /* Stone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stone.m; path = Source/Stone.m; sourceTree = "<group>"; };
 		404441E31A9AE6BA00942654 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gameplay.h; path = Source/Gameplay.h; sourceTree = "<group>"; };
 		404441E41A9AE6BA00942654 /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gameplay.m; path = Source/Gameplay.m; sourceTree = "<group>"; };
+		409084451AF4B5A900523838 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../../../../../FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		409084461AF4B5A900523838 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		409084471AF4B5A900523838 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		409084481AF4B5A900523838 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		4096F0F11AD47C2200378BB7 /* Police.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Police.h; path = Source/Police.h; sourceTree = "<group>"; };
 		4096F0F21AD47C2200378BB7 /* Police.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Police.m; path = Source/Police.m; sourceTree = "<group>"; };
 		40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Prison Break.mp3"; sourceTree = "<group>"; };
@@ -322,11 +330,15 @@
 			files = (
 				7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
+				4090844C1AF4B5A900523838 /* FBSDKShareKit.framework in Frameworks */,
 				B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */,
+				409084491AF4B5A900523838 /* Bolts.framework in Frameworks */,
+				4090844B1AF4B5A900523838 /* FBSDKLoginKit.framework in Frameworks */,
 				B77F1B3417B978D7009739AE /* OpenGLES.framework in Frameworks */,
 				B77F1B3617B978D7009739AE /* OpenAL.framework in Frameworks */,
 				B77F1B3817B978D7009739AE /* AudioToolbox.framework in Frameworks */,
 				B77F1B3A17B978D7009739AE /* AVFoundation.framework in Frameworks */,
+				4090844A1AF4B5A900523838 /* FBSDKCoreKit.framework in Frameworks */,
 				B77F1B3C17B978D7009739AE /* UIKit.framework in Frameworks */,
 				B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */,
 				B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */,
@@ -603,6 +615,10 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				409084451AF4B5A900523838 /* Bolts.framework */,
+				409084461AF4B5A900523838 /* FBSDKCoreKit.framework */,
+				409084471AF4B5A900523838 /* FBSDKLoginKit.framework */,
+				409084481AF4B5A900523838 /* FBSDKShareKit.framework */,
 				BC5399D31A44DCC90063F482 /* AndroidKit.framework */,
 				BC5399D41A44DCC90063F482 /* CoreJava.framework */,
 				BC5399D51A44DCC90063F482 /* GLActivityKit.framework */,
@@ -726,7 +742,6 @@
 						CreatedOnToolsVersion = 6.0.1;
 					};
 					B77F1B2D17B978D7009739AE = {
-						DevelopmentTeam = 6N5C46ZHL7;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -1236,7 +1251,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1277,7 +1292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

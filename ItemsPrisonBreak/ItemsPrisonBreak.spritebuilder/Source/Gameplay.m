@@ -87,7 +87,7 @@ static const float MIN_SPEED = 10.f;
 
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB {
-//    self.paused = YES;
+    //    self.paused = YES;
     
     _physicsNode.collisionDelegate = self;
     //_physicsNode.debugDraw = TRUE;
@@ -105,7 +105,7 @@ static const float MIN_SPEED = 10.f;
     }
     itemsCount[2] = 2;
     currentItem = 0;
-
+    
     _stone = 2;
     _success = FALSE;
     _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[0]];
@@ -118,10 +118,10 @@ static const float MIN_SPEED = 10.f;
         policeDistracted = true;
         flip = FALSE;
         current_level = 1;
-        int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
-//        if (dataLevel == current_level) {
+        //        int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
+        //        if (dataLevel == current_level) {
         [self addInstruction:1];
-//        }
+        //        }
     } else if([selectedLevel isEqual: @"Levels/Level4"] || [selectedLevel isEqual: @"Levels/Level5"]) {
         _switch.visible = TRUE;
         _switch.title = stone_text;
@@ -131,17 +131,17 @@ static const float MIN_SPEED = 10.f;
         NSTimeInterval timeInterval = 5.0;
         timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(handleTimer:)
                                                userInfo:nil
-                                               repeats:YES];
+                                                repeats:YES];
         totalItems = 3;
         current_level = 5;
         
         if ([selectedLevel isEqual:@"Levels/Level4"]) {
             current_level = 4;
             totalItems = 2;
-            int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
-//            if (dataLevel == current_level) {
+            //            int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
+            //            if (dataLevel == current_level) {
             [self addInstruction:3];
-//            }
+            //            }
         }
     } else {
         _switch.visible = TRUE;
@@ -152,10 +152,10 @@ static const float MIN_SPEED = 10.f;
         current_level = 3;
         if ([selectedLevel isEqual:@"Levels/Level2"]) {
             current_level = 2;
-            int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
-//            if (dataLevel == current_level) {
+            //            int dataLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey:levelPass];
+            //            if (dataLevel == current_level) {
             [self addInstruction:2];
-//            }
+            //            }
         }
     }
     
@@ -248,9 +248,9 @@ static const float MIN_SPEED = 10.f;
 //    CCNode* stone = [CCBReader load:@"Stone"];
 //    stone.position = ccpAdd(_escaperHand.position, ccp(16, 15));
 //    stone.scale = 0.5;
-//    
+//
 //    [_physicsNode addChild:stone];
-//    
+//
 //    CGPoint launchDirection = ccp(1, 0);
 //    CGPoint force = ccpMult(launchDirection, 8000);
 //    [stone.physicsBody applyForce:force];
@@ -305,7 +305,7 @@ static const float MIN_SPEED = 10.f;
     popup.position = ccp(0.25, 0.25);
     [self addChild:popup];
     self.paused = YES;
-
+    
     return YES;
 }
 
@@ -318,8 +318,8 @@ static const float MIN_SPEED = 10.f;
     Police *p = (Police *) police;
     [p flipPolice];
     //[p stopAllActions];
-//    CCSprite *pi = (CCSprite *) police;
-//    pi.paused = YES;
+    //    CCSprite *pi = (CCSprite *) police;
+    //    pi.paused = YES;
     [coin removeFromParent];
     policeDistracted = true;
     return YES;
@@ -481,8 +481,8 @@ static const float MIN_SPEED = 10.f;
     }
     CCLOG(@"h%d",currentItem);
     _switch.title = [items objectAtIndex:currentItem];
-//    _itemsLeft.string = [NSString stringWithFormat:@"%@", [itemsCount objectAtIndex:currentItem]];
-      _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[currentItem]];
+    //    _itemsLeft.string = [NSString stringWithFormat:@"%@", [itemsCount objectAtIndex:currentItem]];
+    _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[currentItem]];
 }
 
 +(void) setSelectedLevel: (NSString *) level {
@@ -491,10 +491,10 @@ static const float MIN_SPEED = 10.f;
 
 - (void)handleTimer:(NSTimer *)theTimer
 {
-//    NSDateFormatter *dateFormator = [[NSDateFormatter alloc] init];
-//    dateFormator.dateFormat = @"yyyy-MM-dd  HH:mm:ss";
-//    NSString *date = [dateFormator stringFromDate:[NSDate date]];
-//    NSLog(@"handleTimer %@", date);
+    //    NSDateFormatter *dateFormator = [[NSDateFormatter alloc] init];
+    //    dateFormator.dateFormat = @"yyyy-MM-dd  HH:mm:ss";
+    //    NSString *date = [dateFormator stringFromDate:[NSDate date]];
+    //    NSLog(@"handleTimer %@", date);
     if (flip) {
         flip = FALSE;
         [level unflipCamera];

@@ -8,7 +8,9 @@
 
 #import "LevelSelection.h"
 #import "Gameplay.h"
-//#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @implementation LevelSelection {
     CCButton *_button2;
@@ -40,28 +42,74 @@ static NSString * const levelPass = @"levelPass";
     if (level == 5) {
         if (_button5 != nil) {
             [_button5 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateNormal];
+            [_button5 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateHighlighted];
+            [_button5 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateDisabled];
         }
     }
     
     if (level >= 4) {
         if (_button4 != nil) {
             [_button4 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateNormal];
+            [_button4 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateHighlighted];
+            [_button4 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateDisabled];
         }
     }
     
     if (level >= 3) {
         if (_button3 != nil) {
             [_button3 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateNormal];
+            [_button3 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateHighlighted];
+            [_button3 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateDisabled];
         }
     }
     
     if (level >= 2) {
         if (_button2 != nil) {
             [_button2 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateNormal];
+            [_button2 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateHighlighted];
+            [_button2 setBackgroundSpriteFrame:spriteFrame forState:CCControlStateDisabled];
         }
     }
     
+    //    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    //    UIView *view = [CCDirector sharedDirector].view;
+    //    loginButton.center = view.center;
+    //    [view addSubview:loginButton];
+    
+    //    FBSDKShareButton *shareButton = [[FBSDKShareButton alloc] init];
+    //    UIButton *m = shareButton;
+    //    UIView *view = [CCDirector sharedDirector].view;
+    //    shareButton.center = ccpAdd(view.center, CGPointMake(0, 100));
+    //    shareButton.enabled = TRUE;
+    //
+    //    [self setUserInteractionEnabled:YES];
+    ////    [m setUserInteractionEnabled:YES];
+    //    [shareButton addTarget:self action:@selector(shareBtn) forControlEvents:UIControlEventTouchUpInside];
+    //
+    ////    [self addChild:m];
+    //    [view addSubview:shareButton];
 }
+
+-(void)share{
+    NSLog(@"share");
+    CCScene *scene = [[CCDirector sharedDirector] runningScene];
+    CCNode *node = [scene.children objectAtIndex:0];
+    UIImage *image = [self screenshotImage:node];
+    FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+    photo.image = image;
+    photo.userGenerated = YES;
+    [photo setImageURL:[NSURL URLWithString:@"http://www.itemsprisonbreak.com"]];
+    FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+    content.photos = @[photo];
+    FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+    dialog.fromViewController = [CCDirector sharedDirector];
+    [dialog setShareContent:content];
+    dialog.mode = FBSDKShareDialogModeShareSheet;
+    CCLOG(@"Show");
+    [dialog show];
+    CCLOG(@"Show end");
+}
+
 
 - (void) startOne {
     //[Gameplay setSelectedLevel: @"Levels/Level1"];
@@ -103,23 +151,41 @@ static NSString * const levelPass = @"levelPass";
 }
 
 
-//- (void)applicationDidBecomeActive:(UIApplication *)application {
-//    [FBSDKAppEvents activateApp];
-//}
-//
-//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    return [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                    didFinishLaunchingWithOptions:launchOptions];
-//}
-//
-//- (BOOL)application:(UIApplication *)application
-//            openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication
-//         annotation:(id)annotation {
-//    return [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                                          openURL:url
-//                                                sourceApplication:sourceApplication
-//                                                       annotation:annotation];
-//}
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSDKAppEvents activateApp];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+}
+
+-(UIImage*) screenshotImage:(CCNode*)startNode
+{
+    
+    CCLOG(@"image");
+    [CCDirector sharedDirector].nextDeltaTimeZero = YES;
+    
+    CGSize windowSize = [[CCDirector sharedDirector]viewSize];
+    CCRenderTexture* crt =
+    [CCRenderTexture renderTextureWithWidth:windowSize.width
+                                     height:windowSize.height];
+    [crt begin];
+    [startNode visit];
+    [crt end];
+    
+    return [crt getUIImage];
+}
+
 
 @end

@@ -136,8 +136,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>465.5</real>
-							<real>97</real>
+							<real>468.49990844726562</real>
+							<real>74.891616821289062</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -666,8 +666,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>550.5902099609375</real>
-							<real>247.30418395996094</real>
+							<real>550.59014892578125</real>
+							<real>27.695806503295898</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -774,8 +774,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>558.95098876953125</real>
-							<real>137</real>
+							<real>564.45001220703125</real>
+							<real>111.94161987304688</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -799,8 +799,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.39399999380111694</real>
-							<real>0.3529999852180481</real>
+							<real>0.30000001192092896</real>
+							<real>0.30000001192092896</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -882,8 +882,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>558.95098876953125</real>
-							<real>137</real>
+							<real>564.45001220703125</real>
+							<real>111.94161987304688</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -896,8 +896,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.39399999380111694</real>
-							<real>0.3529999852180481</real>
+							<real>0.30000001192092896</real>
+							<real>0.30000001192092896</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -944,8 +944,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>558.95098876953125</real>
-							<real>20.65049934387207</real>
+							<real>564.45001220703125</real>
+							<real>237.61093139648438</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -969,8 +969,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.39300000667572021</real>
-							<real>0.3529999852180481</real>
+							<real>0.30000001192092896</real>
+							<real>0.30000001192092896</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1052,8 +1052,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>558.95098876953125</real>
-							<real>20.625850677490234</real>
+							<real>564.45001220703125</real>
+							<real>237.61093139648438</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1066,8 +1066,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.39382633566856384</real>
-							<real>0.35257863998413086</real>
+							<real>0.30000001192092896</real>
+							<real>0.30000001192092896</real>
 							<false/>
 							<integer>1</integer>
 						</array>
@@ -1115,7 +1115,7 @@
 						<key>value</key>
 						<array>
 							<real>468.49990844726562</real>
-							<real>150.72209167480469</real>
+							<real>138.63006591796875</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1128,8 +1128,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.37998971343040466</real>
-							<real>0.29501804709434509</real>
+							<real>0.3663213849067688</real>
+							<real>0.39542979001998901</real>
 							<false/>
 							<integer>0</integer>
 						</array>
