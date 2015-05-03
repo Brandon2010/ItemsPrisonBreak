@@ -19,6 +19,9 @@
 #import "Bomb.h"
 #import "CameraPopup.h"
 #import "Instruction.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 static NSString * const kFirstLevel = @"Levels/Level1";
 static NSString *selectedLevel = @"Levels/Level1";
@@ -603,6 +606,43 @@ static const float MIN_SPEED = 10.f;
 - (void) menu {
     CCScene *selectionScene = [CCBReader loadAsScene:@"LevelSelection"];
     [[CCDirector sharedDirector] replaceScene:selectionScene];
+}
+
+-(void)share{
+    NSLog(@"share");
+    CCScene *scene = [[CCDirector sharedDirector] runningScene];
+    CCNode *node = [scene.children objectAtIndex:0];
+    UIImage *image = [self screenshotImage:node];
+    FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+    photo.image = image;
+    photo.userGenerated = YES;
+    [photo setImageURL:[NSURL URLWithString:@"http://www.itemsprisonbreak.com"]];
+    FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+    content.photos = @[photo];
+    FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+    dialog.fromViewController = [CCDirector sharedDirector];
+    [dialog setShareContent:content];
+    dialog.mode = FBSDKShareDialogModeShareSheet;
+    CCLOG(@"Show");
+    [dialog show];
+    CCLOG(@"Show end");
+}
+
+-(UIImage*) screenshotImage:(CCNode*)startNode
+{
+    
+    CCLOG(@"image");
+    [CCDirector sharedDirector].nextDeltaTimeZero = YES;
+    
+    CGSize windowSize = [[CCDirector sharedDirector]viewSize];
+    CCRenderTexture* crt =
+    [CCRenderTexture renderTextureWithWidth:windowSize.width
+                                     height:windowSize.height];
+    [crt begin];
+    [startNode visit];
+    [crt end];
+    
+    return [crt getUIImage];
 }
 
 @end
