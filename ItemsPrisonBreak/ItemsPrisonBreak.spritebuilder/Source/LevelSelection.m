@@ -27,6 +27,7 @@ static NSString * const levelPass = @"levelPass";
     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
     // play sound effect in a loop
     //[audio playEffect:@"Prison Break.mp3" loop:YES];
+//    [audio playEffect:@"Prison Break.mp3"];
     [audio playEffect:@"Prison Break.mp3" volume:0.5 pitch:1 pan:0.5 loop:YES];
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:levelPass]==nil){

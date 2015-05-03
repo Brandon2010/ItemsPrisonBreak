@@ -14,4 +14,8 @@
 - (void) flipPolice {
     [self runAction:[CCActionFlipX actionWithFlipX:YES]];
 }
+
+- (void) unflipPolice {
+    [self runAction:[CCActionFlipX actionWithFlipX:NO]];
+}
 @end

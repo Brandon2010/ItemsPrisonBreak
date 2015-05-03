@@ -18,11 +18,14 @@
 		4090844B1AF4B5A900523838 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409084471AF4B5A900523838 /* FBSDKLoginKit.framework */; };
 		4090844C1AF4B5A900523838 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 409084481AF4B5A900523838 /* FBSDKShareKit.framework */; };
 		4096F0F31AD47C2200378BB7 /* Police.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096F0F21AD47C2200378BB7 /* Police.m */; };
+		40A5CF631AF5A212008EAC2A /* 135371__blackie666__thathurts.wav in Resources */ = {isa = PBXBuildFile; fileRef = 40A5CF621AF5A212008EAC2A /* 135371__blackie666__thathurts.wav */; };
 		40AF8BBE1AE6E6320084B92A /* Prison Break.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */; };
 		40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2757D1AC1EF8000110D41 /* RetryPopup.m */; };
 		40B275891AC2080400110D41 /* Coin.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B275881AC2080400110D41 /* Coin.m */; };
 		40B2758C1AC2241A00110D41 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B2758B1AC2241A00110D41 /* Item.m */; };
 		40B95B1A1AD7594600F34BC8 /* PolicePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B95B191AD7594600F34BC8 /* PolicePopup.m */; };
+		40CDEE9A1AF5749E00DEEB95 /* QuestionMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CDEE991AF5749E00DEEB95 /* QuestionMark.m */; };
+		40CDEE9D1AF57AB000DEEB95 /* ExclamationMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CDEE9C1AF57AB000DEEB95 /* ExclamationMark.m */; };
 		40D4C9801A9D101E000E8AA6 /* YellowSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */; };
 		40D4C9851A9D1042000E8AA6 /* RedSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D4C9841A9D1042000E8AA6 /* RedSwitch.m */; };
 		40D53B121AEF3D040011A2CC /* Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D53B111AEF3D040011A2CC /* Splash.m */; };
@@ -192,6 +195,7 @@
 		409084481AF4B5A900523838 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		4096F0F11AD47C2200378BB7 /* Police.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Police.h; path = Source/Police.h; sourceTree = "<group>"; };
 		4096F0F21AD47C2200378BB7 /* Police.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Police.m; path = Source/Police.m; sourceTree = "<group>"; };
+		40A5CF621AF5A212008EAC2A /* 135371__blackie666__thathurts.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 135371__blackie666__thathurts.wav; sourceTree = "<group>"; };
 		40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Prison Break.mp3"; sourceTree = "<group>"; };
 		40B2757C1AC1EF8000110D41 /* RetryPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RetryPopup.h; path = Source/RetryPopup.h; sourceTree = "<group>"; };
 		40B2757D1AC1EF8000110D41 /* RetryPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RetryPopup.m; path = Source/RetryPopup.m; sourceTree = "<group>"; };
@@ -201,6 +205,10 @@
 		40B2758B1AC2241A00110D41 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Source/Item.m; sourceTree = "<group>"; };
 		40B95B181AD7594600F34BC8 /* PolicePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PolicePopup.h; path = Source/PolicePopup.h; sourceTree = "<group>"; };
 		40B95B191AD7594600F34BC8 /* PolicePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PolicePopup.m; path = Source/PolicePopup.m; sourceTree = "<group>"; };
+		40CDEE981AF5749E00DEEB95 /* QuestionMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionMark.h; path = Source/QuestionMark.h; sourceTree = "<group>"; };
+		40CDEE991AF5749E00DEEB95 /* QuestionMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionMark.m; path = Source/QuestionMark.m; sourceTree = "<group>"; };
+		40CDEE9B1AF57AB000DEEB95 /* ExclamationMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExclamationMark.h; path = Source/ExclamationMark.h; sourceTree = "<group>"; };
+		40CDEE9C1AF57AB000DEEB95 /* ExclamationMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExclamationMark.m; path = Source/ExclamationMark.m; sourceTree = "<group>"; };
 		40D4C97E1A9D101E000E8AA6 /* YellowSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YellowSwitch.h; path = Source/YellowSwitch.h; sourceTree = "<group>"; };
 		40D4C97F1A9D101E000E8AA6 /* YellowSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YellowSwitch.m; path = Source/YellowSwitch.m; sourceTree = "<group>"; };
 		40D4C9831A9D1042000E8AA6 /* RedSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RedSwitch.h; path = Source/RedSwitch.h; sourceTree = "<group>"; };
@@ -352,6 +360,7 @@
 		40AF8BBC1AE6E5790084B92A /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				40A5CF621AF5A212008EAC2A /* 135371__blackie666__thathurts.wav */,
 				403650C91AECA2D300D9912C /* alarm.mp3 */,
 				40AF8BBD1AE6E6320084B92A /* Prison Break.mp3 */,
 			);
@@ -544,11 +553,15 @@
 				B7378993180767190076A88C /* MainScene.m */,
 				404441E31A9AE6BA00942654 /* Gameplay.h */,
 				404441E41A9AE6BA00942654 /* Gameplay.m */,
+				40CDEE981AF5749E00DEEB95 /* QuestionMark.h */,
+				40CDEE991AF5749E00DEEB95 /* QuestionMark.m */,
 				403CF9121AEED9B900A4357D /* CameraPopup.h */,
 				403CF9131AEED9B900A4357D /* CameraPopup.m */,
 				403650C11AEC560800D9912C /* Bomb.h */,
 				403650C21AEC560800D9912C /* Bomb.m */,
 				40B2758A1AC2241A00110D41 /* Item.h */,
+				40CDEE9B1AF57AB000DEEB95 /* ExclamationMark.h */,
+				40CDEE9C1AF57AB000DEEB95 /* ExclamationMark.m */,
 				40B2758B1AC2241A00110D41 /* Item.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 				404441DC1A9AE2AB00942654 /* Stone.h */,
@@ -874,6 +887,7 @@
 				B7378977180762440076A88C /* Default.png in Resources */,
 				40AF8BBE1AE6E6320084B92A /* Prison Break.mp3 in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
+				40A5CF631AF5A212008EAC2A /* 135371__blackie666__thathurts.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +964,7 @@
 			files = (
 				40B2758C1AC2241A00110D41 /* Item.m in Sources */,
 				4096F0F31AD47C2200378BB7 /* Police.m in Sources */,
+				40CDEE9D1AF57AB000DEEB95 /* ExclamationMark.m in Sources */,
 				40D7183D1A9D331D0097862A /* StickDoor.m in Sources */,
 				40F943F61AA5885400A293C7 /* WinPopup.m in Sources */,
 				403CF9141AEED9B900A4357D /* CameraPopup.m in Sources */,
@@ -968,6 +983,7 @@
 				40B2757E1AC1EF8000110D41 /* RetryPopup.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				404441DE1A9AE2AB00942654 /* Stone.m in Sources */,
+				40CDEE9A1AF5749E00DEEB95 /* QuestionMark.m in Sources */,
 				40D53B121AEF3D040011A2CC /* Splash.m in Sources */,
 				403650C81AEC9DFB00D9912C /* ExplosionWall.m in Sources */,
 				40D53B171AEF4A290011A2CC /* Instruction.m in Sources */,

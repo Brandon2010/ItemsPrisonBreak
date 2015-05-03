@@ -12,4 +12,6 @@
 
 - (void) flipPolice;
 
+- (void) unflipPolice;
+
 @end

@@ -80,6 +80,11 @@ static NSString * const levelPass = @"levelPass";
     
     // Instruction Layer
     Instruction *instruction;
+    
+    // Trace Mark
+    CCNode* question;
+    CCNode* exclamation;
+    int rockPolice;
 }
 
 
@@ -158,6 +163,8 @@ static const float MIN_SPEED = 10.f;
             //            }
         }
     }
+    
+    rockPolice = 0;
     
 }
 
@@ -326,6 +333,28 @@ static const float MIN_SPEED = 10.f;
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone police:(CCNode *)police {
+//    [self shortAlarm];
+    if (rockPolice == 0) {
+        question = [CCBReader load:@"Question"];
+        question.position = ccpAdd(police.position, ccp(-20, 65));
+        question.scale = 0.5;
+        [self addChild:question];
+    } else if (rockPolice == 1) {
+        [question removeFromParent];
+        exclamation = [CCBReader load:@"Exclamation"];
+        exclamation.position = ccpAdd(police.position, ccp(-20, 65));
+        if (policeDistracted) {
+            policeDistracted = false;
+            Police *p = (Police *) police;
+            [p unflipPolice];
+        }
+        exclamation.scale = 0.5;
+        [self addChild:exclamation];
+    } else if (rockPolice == 2) {
+        [self popupRetryPolice];
+    }
+    
+    rockPolice ++;
     [stone removeFromParent];
     return YES;
 }
@@ -349,6 +378,26 @@ static const float MIN_SPEED = 10.f;
     return YES;
 }
 
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone camera:(CCNode *)camera {
+    [self alarm];
+    [self popupRetryCamera];
+    return YES;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coin:(CCNode *)coin camera:(CCNode *)camera {
+//    [self shortAlarm];
+    return YES;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair bomb:(CCNode *)bomb camera:(CCNode *)camera {
+    [camera removeFromParent];
+    return YES;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair bomb:(CCNode *)bomb police:(CCNode *)police {
+    [police removeFromParent];
+    return YES;
+}
 
 - (void)releaseHead {
     if (_mouseJoint != nil)
@@ -516,6 +565,11 @@ static const float MIN_SPEED = 10.f;
     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
     [audio playEffect:@"alarm.mp3" volume:0.5 pitch:1 pan:0.5 loop:NO];
 }
+
+//- (void) shortAlarm {
+//    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+//    [audio playEffect:@"thathurts.wav" volume:0.5 pitch:1 pan:0.5 loop:NO];
+//}
 
 - (void) begin {
     self.paused = NO;
