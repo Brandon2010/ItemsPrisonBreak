@@ -47,6 +47,8 @@ static NSString * const levelPass = @"levelPass";
     // Label the number of remainde items
     CCLabelTTF *_itemsLeft;
     int _stone;
+    CCLabelTTF *timeLeft;
+    int totalTime;
     
     // Control Level Progress
     Level *level;
@@ -83,6 +85,8 @@ static NSString * const levelPass = @"levelPass";
     
     // Instruction Layer
     Instruction *instruction;
+    int page;
+    BOOL beginTimer;
     
     // Trace Mark
     CCNode* question;
@@ -118,9 +122,12 @@ static const float MIN_SPEED = 10.f;
     _success = FALSE;
     _itemsLeft.string = [NSString stringWithFormat:@"%d", itemsCount[0]];
     pass = 1;
+    beginTimer = TRUE;
     
     // Hide switch button in first level
     if ([selectedLevel isEqual: @"Levels/Level1"]) {
+        totalTime = 180;
+        timeLeft.string = [self transTime: (time_t)totalTime];
         _switch.visible = FALSE;
         totalItems = 1;
         policeDistracted = true;
@@ -131,6 +138,8 @@ static const float MIN_SPEED = 10.f;
         [self addInstruction:1];
         //        }
     } else if([selectedLevel isEqual: @"Levels/Level4"] || [selectedLevel isEqual: @"Levels/Level5"]) {
+        totalTime = 300;
+        timeLeft.string = [self transTime: (time_t)totalTime];
         _switch.visible = TRUE;
         _switch.title = stone_text;
         policeDistracted = false;
@@ -152,6 +161,8 @@ static const float MIN_SPEED = 10.f;
             //            }
         }
     } else {
+        totalTime = 240;
+        timeLeft.string = [self transTime: (time_t)totalTime];
         _switch.visible = TRUE;
         _switch.title = stone_text;
         totalItems = 2;
@@ -168,7 +179,7 @@ static const float MIN_SPEED = 10.f;
     }
     
     rockPolice = 0;
-    
+    [self schedule:@selector(updateTime) interval:1.0f];
 }
 
 #pragma mark - Level completion
@@ -336,7 +347,7 @@ static const float MIN_SPEED = 10.f;
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair stone:(CCNode *)stone police:(CCNode *)police {
-//    [self shortAlarm];
+    [self shortAlarm];
     if (rockPolice == 0) {
         question = [CCBReader load:@"Question"];
         question.position = ccpAdd(police.position, ccp(-20, 65));
@@ -388,7 +399,7 @@ static const float MIN_SPEED = 10.f;
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coin:(CCNode *)coin camera:(CCNode *)camera {
-//    [self shortAlarm];
+    [self shortAlarm];
     return YES;
 }
 
@@ -467,6 +478,11 @@ static const float MIN_SPEED = 10.f;
 #pragma mark - Update
 - (void)update:(CCTime)delta
 {
+    if (totalTime == 0) {
+        [self alarm];
+        [self popupRetry];
+    }
+    
     if (_currentItem.launched && isBomb == TRUE) {
         if (ccpLength(_currentItem.physicsBody.velocity) < MIN_SPEED){
             CCParticleSystem *explosion = (CCParticleSystem *)[CCBReader load:@"BombExplosion"];
@@ -569,10 +585,10 @@ static const float MIN_SPEED = 10.f;
     [audio playEffect:@"alarm.mp3" volume:0.5 pitch:1 pan:0.5 loop:NO];
 }
 
-//- (void) shortAlarm {
-//    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
-//    [audio playEffect:@"thathurts.wav" volume:0.5 pitch:1 pan:0.5 loop:NO];
-//}
+- (void) shortAlarm {
+    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+    [audio playEffect:@"135371__blackie666__thathurts.wav" volume:0.5 pitch:1 pan:0.5 loop:NO];
+}
 
 - (void) begin {
     self.paused = NO;
@@ -580,24 +596,70 @@ static const float MIN_SPEED = 10.f;
     _retryButton.enabled = TRUE;
     _menuButton.enabled = TRUE;
     self.userInteractionEnabled = TRUE;
+    beginTimer = TRUE;
 }
 
 - (void) addInstruction: (int) index {
+    beginTimer = FALSE;
     self.paused = YES;
     self.userInteractionEnabled = FALSE;
     _retryButton.enabled = FALSE;
     _menuButton.enabled = FALSE;
     if (index == 1) {
-        instruction = (Instruction *)[CCBReader load:@"Instruction1" owner:self];
+        instruction = (Instruction *)[CCBReader load:@"Instruction1-1" owner:self];
     } else if (index == 2) {
-        instruction = (Instruction *)[CCBReader load:@"Instruction2" owner:self];
+        instruction = (Instruction *)[CCBReader load:@"Instruction2-1" owner:self];
     } else {
-        instruction = (Instruction *)[CCBReader load:@"Instruction3" owner:self];
+        instruction = (Instruction *)[CCBReader load:@"Instruction3-1" owner:self];
+    }
+    instruction.positionType = CCPositionTypeNormalized;
+    instruction.position = ccp(0, 0);
+    [self addChild:instruction];
+    page = 1;
+}
+
+- (void) nextIns1 {
+    page++;
+    [self removeInstruction];
+    if (page == 2) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction1-2" owner:self];
+    } else if (page == 3) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction1-3" owner:self];
+    } else if (page == 4) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction1-4" owner:self];
+    } else if (page == 5) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction1-5" owner:self];
+    } else if (page == 6) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction1-6" owner:self];
+    }
+    
+    instruction.positionType = CCPositionTypeNormalized;
+    instruction.position = ccp(0, 0);
+    [self addChild:instruction];
+}
+
+- (void) nextIns2 {
+    page++;
+    [self removeInstruction];
+    if (page == 2) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction2-2" owner:self];
     }
     instruction.positionType = CCPositionTypeNormalized;
     instruction.position = ccp(0, 0);
     [self addChild:instruction];
 }
+
+- (void) nextIns3 {
+    page++;
+    [self removeInstruction];
+    if (page == 2) {
+        instruction = (Instruction *)[CCBReader load:@"Instruction3-2" owner:self];
+    }
+    instruction.positionType = CCPositionTypeNormalized;
+    instruction.position = ccp(0, 0);
+    [self addChild:instruction];
+}
+
 
 - (void) removeInstruction {
     [self removeChild:instruction];
@@ -643,6 +705,37 @@ static const float MIN_SPEED = 10.f;
     [crt end];
     
     return [crt getUIImage];
+}
+
+- (void) updateTime {
+    if (!beginTimer) {
+        return;
+    }
+    if (totalTime < 0) {
+        return;
+    }
+    totalTime--;
+    timeLeft.string = [self transTime: (time_t)totalTime];
+    if (totalTime <= 60) {
+        timeLeft.fontColor = [CCColor redColor];
+    }
+}
+
+- (NSString *)transTime:(time_t)t{
+    NSString  *timeformat = @"%M:%S";
+    NSString  *currenttime = [self dateInFormat:t format:timeformat];
+    return currenttime;
+}
+
+- (NSString *)dateInFormat:(time_t)dateTime format:(NSString*) stringFormat
+
+{
+    char buffer[80];
+    const char *timeformat = [stringFormat UTF8String];
+    struct tm * timeinfo;
+    timeinfo = localtime(&dateTime);
+    strftime(buffer, 80, timeformat, timeinfo);
+    return [NSString  stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
 
 @end
